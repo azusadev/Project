@@ -38,18 +38,18 @@
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[420, 650]"/>
+          <Dimension value="[510, 650]"/>
         </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[420, 650]"/>
+          <Dimension value="[510, 650]"/>
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[420, 650]"/>
+          <Dimension value="[510, 650]"/>
         </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="750" y="20" width="420" height="650"/>
+          <AbsoluteConstraints x="680" y="20" width="510" height="650"/>
         </Constraint>
       </Constraints>
 
@@ -57,19 +57,19 @@
         <Property name="useNullLayout" type="boolean" value="false"/>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JScrollPane" name="category_sp1">
+        <Container class="javax.swing.JScrollPane" name="receipt_sp">
           <Properties>
             <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="verticalScrollBarPolicy" type="int" value="22"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[420, 400]"/>
+              <Dimension value="[510, 400]"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[420, 400]"/>
+              <Dimension value="[510, 400]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[420, 400]"/>
+              <Dimension value="[510, 400]"/>
             </Property>
             <Property name="viewportView" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="c_content"/>
@@ -83,7 +83,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="c_container1">
+            <Container class="javax.swing.JPanel" name="r_container">
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
                 <Property name="alignment" type="int" value="0"/>
@@ -91,16 +91,62 @@
                 <Property name="verticalGap" type="int" value="0"/>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="c_content1">
+                <Container class="javax.swing.JPanel" name="r_content">
                   <Properties>
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-                    <Property name="columns" type="int" value="0"/>
-                    <Property name="horizontalGap" type="int" value="20"/>
-                    <Property name="rows" type="int" value="1"/>
+                    <Property name="columns" type="int" value="1"/>
+                    <Property name="rows" type="int" value="0"/>
+                    <Property name="verticalGap" type="int" value="10"/>
                   </Layout>
+                  <SubComponents>
+                    <Component class="com.project.project.Item_Receipt" name="item_Receipt1">
+                    </Component>
+                    <Component class="com.project.project.Item_Receipt" name="item_Receipt2">
+                    </Component>
+                    <Component class="com.project.project.Item_Receipt" name="item_Receipt3">
+                    </Component>
+                    <Component class="com.project.project.Item_Receipt" name="item_Receipt4">
+                    </Component>
+                    <Component class="com.project.project.Item_Receipt" name="item_Receipt5">
+                    </Component>
+                    <Component class="com.project.project.Item_Receipt" name="item_Receipt6">
+                    </Component>
+                    <Component class="com.project.project.Item_Receipt" name="item_Receipt7">
+                    </Component>
+                    <Component class="com.project.project.Item_Receipt" name="item_Receipt8">
+                    </Component>
+                    <Component class="com.project.project.Item_Receipt" name="item_Receipt9">
+                    </Component>
+                    <Component class="com.project.project.Item_Receipt" name="item_Receipt10">
+                    </Component>
+                    <Component class="com.project.project.Item_Receipt" name="item_Receipt11">
+                    </Component>
+                    <Component class="com.project.project.Item_Receipt" name="item_Receipt12">
+                    </Component>
+                    <Component class="com.project.project.Item_Receipt" name="item_Receipt13">
+                    </Component>
+                    <Component class="com.project.project.Item_Receipt" name="item_Receipt14">
+                    </Component>
+                    <Component class="com.project.project.Item_Receipt" name="item_Receipt15">
+                    </Component>
+                    <Component class="com.project.project.Item_Receipt" name="item_Receipt16">
+                    </Component>
+                    <Component class="com.project.project.Item_Receipt" name="item_Receipt17">
+                    </Component>
+                    <Component class="com.project.project.Item_Receipt" name="item_Receipt18">
+                    </Component>
+                    <Component class="com.project.project.Item_Receipt" name="item_Receipt19">
+                    </Component>
+                    <Component class="com.project.project.Item_Receipt" name="item_Receipt20">
+                    </Component>
+                    <Component class="com.project.project.Item_Receipt" name="item_Receipt21">
+                    </Component>
+                    <Component class="com.project.project.Item_Receipt" name="item_Receipt22">
+                    </Component>
+                  </SubComponents>
                 </Container>
               </SubComponents>
             </Container>

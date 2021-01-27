@@ -5,6 +5,8 @@
  */
 package com.project.project;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author reden
@@ -22,6 +24,7 @@ public class Item_Category extends javax.swing.JPanel {
     public Item_Category(String name) {
         initComponents();
         categoryName = name;
+        this.setBackground(ColorTheme.primaryColor);
         jl_category.setText("<html><div style='text-align: center;'>" + categoryName + "<div></html");
     }
     
@@ -30,6 +33,10 @@ public class Item_Category extends javax.swing.JPanel {
         return categoryName;
     }
 
+    public JLabel getJLabelName()
+    {
+        return jl_category;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

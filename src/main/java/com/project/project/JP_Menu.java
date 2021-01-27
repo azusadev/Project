@@ -16,6 +16,7 @@ import java.awt.event.MouseListener;
  */
 public class JP_Menu extends javax.swing.JPanel implements MouseListener{
 
+    private Item_Category selectedCategory = null;
     /**
      * Creates new form JP_Menu
      */
@@ -26,6 +27,13 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
         menu_area.setBackground(ColorTheme.secondaryColor);
         this.setBackground(ColorTheme.secondaryColor);
 
+        
+        receipt_sp.getVerticalScrollBar().setPreferredSize(new Dimension(0,0));
+        receipt_sp.getVerticalScrollBar().setUnitIncrement(36);
+        receipt_sp.getViewport().setBorder(null);
+        receipt_sp.setViewportBorder(null);
+        receipt_sp.setBorder(null);
+        
                                 
         //setting category scroll pane
         category_sp.getHorizontalScrollBar().setPreferredSize(new Dimension(0,0));
@@ -33,6 +41,7 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
         category_sp.getViewport().setBorder(null);
         category_sp.setViewportBorder(null);
         category_sp.setBorder(null);
+        
         
         for (int i = 0; i < 30; i++) {
             System.out.println(i);
@@ -54,9 +63,31 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
     private void initComponents() {
 
         receipt_area = new javax.swing.JPanel();
-        category_sp1 = new javax.swing.JScrollPane();
-        c_container1 = new javax.swing.JPanel();
-        c_content1 = new javax.swing.JPanel();
+        receipt_sp = new javax.swing.JScrollPane();
+        r_container = new javax.swing.JPanel();
+        r_content = new javax.swing.JPanel();
+        item_Receipt1 = new com.project.project.Item_Receipt();
+        item_Receipt2 = new com.project.project.Item_Receipt();
+        item_Receipt3 = new com.project.project.Item_Receipt();
+        item_Receipt4 = new com.project.project.Item_Receipt();
+        item_Receipt5 = new com.project.project.Item_Receipt();
+        item_Receipt6 = new com.project.project.Item_Receipt();
+        item_Receipt7 = new com.project.project.Item_Receipt();
+        item_Receipt8 = new com.project.project.Item_Receipt();
+        item_Receipt9 = new com.project.project.Item_Receipt();
+        item_Receipt10 = new com.project.project.Item_Receipt();
+        item_Receipt11 = new com.project.project.Item_Receipt();
+        item_Receipt12 = new com.project.project.Item_Receipt();
+        item_Receipt13 = new com.project.project.Item_Receipt();
+        item_Receipt14 = new com.project.project.Item_Receipt();
+        item_Receipt15 = new com.project.project.Item_Receipt();
+        item_Receipt16 = new com.project.project.Item_Receipt();
+        item_Receipt17 = new com.project.project.Item_Receipt();
+        item_Receipt18 = new com.project.project.Item_Receipt();
+        item_Receipt19 = new com.project.project.Item_Receipt();
+        item_Receipt20 = new com.project.project.Item_Receipt();
+        item_Receipt21 = new com.project.project.Item_Receipt();
+        item_Receipt22 = new com.project.project.Item_Receipt();
         menu_area = new javax.swing.JPanel();
         category_sp = new javax.swing.JScrollPane();
         c_container = new javax.swing.JPanel();
@@ -69,30 +100,53 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         receipt_area.setBackground(new java.awt.Color(204, 204, 204));
-        receipt_area.setMaximumSize(new java.awt.Dimension(420, 650));
-        receipt_area.setMinimumSize(new java.awt.Dimension(420, 650));
-        receipt_area.setPreferredSize(new java.awt.Dimension(420, 650));
+        receipt_area.setMaximumSize(new java.awt.Dimension(510, 650));
+        receipt_area.setMinimumSize(new java.awt.Dimension(510, 650));
+        receipt_area.setPreferredSize(new java.awt.Dimension(510, 650));
         receipt_area.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        category_sp1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        category_sp1.setToolTipText("");
-        category_sp1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        category_sp1.setMaximumSize(new java.awt.Dimension(420, 400));
-        category_sp1.setMinimumSize(new java.awt.Dimension(420, 400));
-        category_sp1.setPreferredSize(new java.awt.Dimension(420, 400));
-        category_sp1.setViewportView(c_content);
+        receipt_sp.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        receipt_sp.setToolTipText("");
+        receipt_sp.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        receipt_sp.setMaximumSize(new java.awt.Dimension(510, 400));
+        receipt_sp.setMinimumSize(new java.awt.Dimension(510, 400));
+        receipt_sp.setPreferredSize(new java.awt.Dimension(510, 400));
+        receipt_sp.setViewportView(c_content);
 
-        c_container1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 0));
+        r_container.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 0));
 
-        c_content1.setOpaque(false);
-        c_content1.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
-        c_container1.add(c_content1);
+        r_content.setOpaque(false);
+        r_content.setLayout(new java.awt.GridLayout(0, 1, 0, 10));
+        r_content.add(item_Receipt1);
+        r_content.add(item_Receipt2);
+        r_content.add(item_Receipt3);
+        r_content.add(item_Receipt4);
+        r_content.add(item_Receipt5);
+        r_content.add(item_Receipt6);
+        r_content.add(item_Receipt7);
+        r_content.add(item_Receipt8);
+        r_content.add(item_Receipt9);
+        r_content.add(item_Receipt10);
+        r_content.add(item_Receipt11);
+        r_content.add(item_Receipt12);
+        r_content.add(item_Receipt13);
+        r_content.add(item_Receipt14);
+        r_content.add(item_Receipt15);
+        r_content.add(item_Receipt16);
+        r_content.add(item_Receipt17);
+        r_content.add(item_Receipt18);
+        r_content.add(item_Receipt19);
+        r_content.add(item_Receipt20);
+        r_content.add(item_Receipt21);
+        r_content.add(item_Receipt22);
 
-        category_sp1.setViewportView(c_container1);
+        r_container.add(r_content);
 
-        receipt_area.add(category_sp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, -1, -1));
+        receipt_sp.setViewportView(r_container);
 
-        add(receipt_area, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, 420, 650));
+        receipt_area.add(receipt_sp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, -1, -1));
+
+        add(receipt_area, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 510, 650));
 
         menu_area.setBackground(new java.awt.Color(197, 214, 222));
         menu_area.setPreferredSize(new java.awt.Dimension(700, 580));
@@ -118,13 +172,35 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel c_container;
-    private javax.swing.JPanel c_container1;
     private javax.swing.JPanel c_content;
-    private javax.swing.JPanel c_content1;
     private javax.swing.JScrollPane category_sp;
-    private javax.swing.JScrollPane category_sp1;
+    private com.project.project.Item_Receipt item_Receipt1;
+    private com.project.project.Item_Receipt item_Receipt10;
+    private com.project.project.Item_Receipt item_Receipt11;
+    private com.project.project.Item_Receipt item_Receipt12;
+    private com.project.project.Item_Receipt item_Receipt13;
+    private com.project.project.Item_Receipt item_Receipt14;
+    private com.project.project.Item_Receipt item_Receipt15;
+    private com.project.project.Item_Receipt item_Receipt16;
+    private com.project.project.Item_Receipt item_Receipt17;
+    private com.project.project.Item_Receipt item_Receipt18;
+    private com.project.project.Item_Receipt item_Receipt19;
+    private com.project.project.Item_Receipt item_Receipt2;
+    private com.project.project.Item_Receipt item_Receipt20;
+    private com.project.project.Item_Receipt item_Receipt21;
+    private com.project.project.Item_Receipt item_Receipt22;
+    private com.project.project.Item_Receipt item_Receipt3;
+    private com.project.project.Item_Receipt item_Receipt4;
+    private com.project.project.Item_Receipt item_Receipt5;
+    private com.project.project.Item_Receipt item_Receipt6;
+    private com.project.project.Item_Receipt item_Receipt7;
+    private com.project.project.Item_Receipt item_Receipt8;
+    private com.project.project.Item_Receipt item_Receipt9;
     private javax.swing.JPanel menu_area;
+    private javax.swing.JPanel r_container;
+    private javax.swing.JPanel r_content;
     private javax.swing.JPanel receipt_area;
+    private javax.swing.JScrollPane receipt_sp;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -140,6 +216,15 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
         if(e.getComponent() instanceof Item_Category)
         {
             Item_Category t = (Item_Category) e.getComponent();
+            if(selectedCategory != null)
+            {
+                selectedCategory.setBackground(ColorTheme.primaryColor);
+                selectedCategory.getJLabelName().setForeground(ColorTheme.secondaryColor);
+            }
+            
+            selectedCategory = t;
+            selectedCategory.setBackground(ColorTheme.secondaryColor);
+                selectedCategory.getJLabelName().setForeground(ColorTheme.primaryColor);
             CardLayout c = (CardLayout)menu_area.getLayout();
             c.show(menu_area, t.getCategoryName());
         }
