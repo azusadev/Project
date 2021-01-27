@@ -13,8 +13,9 @@ public class Item_Receipt extends javax.swing.JPanel {
 
     
     private String m_name;
-    private double m_price;
+    private double m_price = 0.00;
     private int m_quantity = 1;
+    private double m_currentPrice = 0.00;
     private JP_MenuCard m_parent = null;
     /**
      * Creates new form Item_Receipt
@@ -25,20 +26,23 @@ public class Item_Receipt extends javax.swing.JPanel {
     
     public Item_Receipt(JP_MenuCard parent, String name, double price) {
         initComponents();
+        m_parent = parent;
         m_name = name;
         m_price = price;
+        m_currentPrice = price;
         menuName.setText(name);
         menuPrice.setText((price * m_quantity) + "");
         menuQuantity.setText(m_quantity + "");
-        m_parent = parent;
     }
 
 
     private void changeQuantity(int i)
     {
         m_quantity = Math.max(1, m_quantity + i);
-        menuPrice.setText((m_price * m_quantity )+ "");
+        m_currentPrice = m_price * m_quantity;
+        menuPrice.setText(m_currentPrice+ "");
         menuQuantity.setText(m_quantity + "");
+        m_parent.recalculateTotal();
     }
     
     public String getMenuName()
@@ -49,6 +53,11 @@ public class Item_Receipt extends javax.swing.JPanel {
     public double getMenuPrice()
     {
         return m_price;
+    }
+    
+    public double getCurrentPrice()
+    {
+        return m_currentPrice;
     }
     
     public int getMenuQuantity()

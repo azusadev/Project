@@ -18,7 +18,6 @@ public class JP_MenuCard extends javax.swing.JPanel implements MouseListener{
 
     private JP_Menu parentMenu = null;
     private String categoryName;
-    private ArrayList<Item_Receipt> receipt = new ArrayList<>();
     /**
      * Creates new form JP_MenuCard
      */
@@ -44,7 +43,7 @@ public class JP_MenuCard extends javax.swing.JPanel implements MouseListener{
         categoryName = name;
         parentMenu = panel;
         for (int i = 0; i < 30; i++) {
-            Item_Menu temp = new Item_Menu(categoryName + " Menu no." + (i+1), 200.00*i);
+            Item_Menu temp = new Item_Menu(categoryName + " Menu no." + (i+1), 200.00*(i+1));
             temp.addMouseListener(this);
             m_content.add(temp);
         }
@@ -93,15 +92,16 @@ public class JP_MenuCard extends javax.swing.JPanel implements MouseListener{
     
     public void removeReceipt(String name)
     {
-        for (int i = 0; i < receipt.size(); i++) {
-            if(receipt.get(i).getMenuName().equals(name))
+        for (int i = 0; i < parentMenu.getReceipt().size(); i++) {
+            if(parentMenu.getReceipt().get(i).getMenuName().equals(name))
             {
-                System.out.println( receipt.get(i).getMenuName() + " FOUND AND DELETED!");
-                parentMenu.r_content.remove(receipt.get(i));
-                receipt.remove(i);
+                System.out.println( parentMenu.getReceipt().get(i).getMenuName() + " FOUND AND DELETED!");
+                parentMenu.r_content.remove(parentMenu.getReceipt().get(i));
+                parentMenu.getReceipt().remove(i);
                 break;
             }
         }
+        recalculateTotal();
         parentMenu.r_content.repaint();
         parentMenu.r_content.revalidate();
     }
@@ -112,25 +112,46 @@ public class JP_MenuCard extends javax.swing.JPanel implements MouseListener{
         {
             Item_Menu temp = (Item_Menu) e.getComponent();
             Item_Receipt t = new Item_Receipt(this, temp.getMenuName(), temp.getMenuPrice());
+            System.out.println(temp.getMenuName() + " -- " + temp.getMenuPrice());
             boolean got = false;
-            for (int i = 0; i < receipt.size(); i++) {
-                if(receipt.get(i).getMenuName().equals(t.getMenuName()))
+            for (int i = 0; i < parentMenu.getReceipt().size(); i++) {
+                if(parentMenu.getReceipt().get(i).getMenuName().equals(t.getMenuName()))
                 {
-                    receipt.get(i).addQuantity();
+                    parentMenu.getReceipt().get(i).addQuantity();
                     got = true;
                     break;
                 }
             }
             if(!got) 
             {
+                parentMenu.getReceipt().add(t);
                 parentMenu.r_content.add(t);
-                receipt.add(t);
             }
+            recalculateTotal();
             parentMenu.r_content.repaint();
             parentMenu.r_content.revalidate();
         }
     }
 
+    public void recalculateTotal()
+    {
+        double t = 0.0;
+        for(Item_Receipt r : parentMenu.getReceipt())
+        {
+            t += r.getCurrentPrice();
+            System.out.println(r.getCurrentPrice() + "");
+        }
+        parentMenu.setTaxAmount(t * POS_Constants.taxRate);
+        parentMenu.setTotalAmount(t - parentMenu.getTaxAmount());
+        System.out.println(parentMenu.getTaxAmount() + "---" + parentMenu.getTotalAmount());
+        parentMenu.jl_tax.setText(parentMenu.getTaxAmount() + "");
+        parentMenu.jl_total.setText(parentMenu.getTotalAmount() + "");
+        parentMenu.jl_tax.repaint();        
+        parentMenu.jl_tax.revalidate();
+        parentMenu.jl_total.repaint();        
+        parentMenu.jl_total.revalidate();
+    }
+    
     @Override
     public void mouseClicked(MouseEvent e) {
     }

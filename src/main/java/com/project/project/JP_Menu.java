@@ -9,6 +9,7 @@ import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,16 +18,27 @@ import java.awt.event.MouseListener;
 public class JP_Menu extends javax.swing.JPanel implements MouseListener{
 
     private Item_Category selectedCategory = null;
+    private ArrayList<Item_Receipt> receipt;
+    private double totalAmount = 0.00;
+    private double taxAmount = 0.00;
+
+    public ArrayList<Item_Receipt> getReceipt() {
+        return receipt;
+    }
+
+    public void setReceipt(ArrayList<Item_Receipt> receipt) {
+        this.receipt = receipt;
+    }
+
     /**
      * Creates new form JP_Menu
      */
     public JP_Menu() {
         initComponents();
+        this.receipt = new ArrayList<>();
         this.setBackground(ColorTheme.secondaryColor);
         receipt_area.setBackground(ColorTheme.secondaryColor);
         menu_area.setBackground(ColorTheme.secondaryColor);
-        this.setBackground(ColorTheme.secondaryColor);
-
         
         receipt_sp.getVerticalScrollBar().setPreferredSize(new Dimension(0,0));
         receipt_sp.getVerticalScrollBar().setUnitIncrement(36);
@@ -53,6 +65,22 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
         }
     }
 
+    public double getTotalAmount() {
+        return totalAmount;
+    }
+
+    public double getTaxAmount() {
+        return taxAmount;
+    }
+
+    public void setTotalAmount(double totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
+    public void setTaxAmount(double taxAmount) {
+        this.taxAmount = taxAmount;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -72,8 +100,11 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        jl_total = new javax.swing.JLabel();
+        jl_tax = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         menu_area = new javax.swing.JPanel();
         category_sp = new javax.swing.JScrollPane();
         c_container = new javax.swing.JPanel();
@@ -112,7 +143,7 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Receipt");
-        receipt_area.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 150, -1));
+        receipt_area.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 510, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Price");
@@ -134,15 +165,56 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
         jLabel6.setText("Tax:");
         receipt_area.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, 40, -1));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setText("0.00");
-        receipt_area.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 530, -1, -1));
+        jl_total.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jl_total.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jl_total.setText("0.00");
+        receipt_area.add(jl_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 530, 80, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel8.setText("0.00");
-        receipt_area.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 500, 40, -1));
+        jl_tax.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jl_tax.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jl_tax.setText("0.00");
+        receipt_area.add(jl_tax, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 500, 80, -1));
 
-        add(receipt_area, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 510, 600));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 130, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        receipt_area.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 580, 130, 40));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 130, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        receipt_area.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 580, -1, -1));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 130, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        receipt_area.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 580, -1, -1));
+
+        add(receipt_area, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 510, 630));
 
         menu_area.setBackground(new java.awt.Color(197, 214, 222));
         menu_area.setPreferredSize(new java.awt.Dimension(660, 550));
@@ -176,8 +248,11 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    public javax.swing.JLabel jl_tax;
+    public javax.swing.JLabel jl_total;
     private javax.swing.JPanel menu_area;
     private javax.swing.JPanel r_container;
     public javax.swing.JPanel r_content;
