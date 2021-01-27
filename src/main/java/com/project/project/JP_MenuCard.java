@@ -92,12 +92,12 @@ public class JP_MenuCard extends javax.swing.JPanel implements MouseListener{
     
     public void removeReceipt(String name)
     {
-        for (int i = 0; i < parentMenu.getReceipt().size(); i++) {
-            if(parentMenu.getReceipt().get(i).getMenuName().equals(name))
+        for (Item_Receipt r : parentMenu.getReceipt()) {
+            if(r.getMenuName().equals(name))
             {
-                System.out.println( parentMenu.getReceipt().get(i).getMenuName() + " FOUND AND DELETED!");
-                parentMenu.r_content.remove(parentMenu.getReceipt().get(i));
-                parentMenu.getReceipt().remove(i);
+                System.out.println( r.getMenuName() + " FOUND AND DELETED!");
+                parentMenu.r_content.remove(r);
+                parentMenu.getReceipt().remove(r);
                 break;
             }
         }
@@ -114,10 +114,10 @@ public class JP_MenuCard extends javax.swing.JPanel implements MouseListener{
             Item_Receipt t = new Item_Receipt(this, temp.getMenuName(), temp.getMenuPrice());
             System.out.println(temp.getMenuName() + " -- " + temp.getMenuPrice());
             boolean got = false;
-            for (int i = 0; i < parentMenu.getReceipt().size(); i++) {
-                if(parentMenu.getReceipt().get(i).getMenuName().equals(t.getMenuName()))
+            for (Item_Receipt r : parentMenu.getReceipt()) {
+                if(r.getMenuName().equals(t.getMenuName()))
                 {
-                    parentMenu.getReceipt().get(i).addQuantity();
+                    r.addQuantity();
                     got = true;
                     break;
                 }
