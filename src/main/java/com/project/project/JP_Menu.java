@@ -22,7 +22,6 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
     public JP_Menu() {
         initComponents();
         this.setBackground(ColorTheme.secondaryColor);
-        category_area.setBackground(ColorTheme.secondaryColor);
         receipt_area.setBackground(ColorTheme.secondaryColor);
         menu_area.setBackground(ColorTheme.secondaryColor);
         this.setBackground(ColorTheme.secondaryColor);
@@ -55,40 +54,52 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
     private void initComponents() {
 
         receipt_area = new javax.swing.JPanel();
+        category_sp1 = new javax.swing.JScrollPane();
+        c_container1 = new javax.swing.JPanel();
+        c_content1 = new javax.swing.JPanel();
         menu_area = new javax.swing.JPanel();
-        category_area = new javax.swing.JPanel();
         category_sp = new javax.swing.JScrollPane();
         c_container = new javax.swing.JPanel();
         c_content = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(197, 214, 222));
-        setMaximumSize(new java.awt.Dimension(1200, 650));
-        setMinimumSize(new java.awt.Dimension(1200, 650));
-        setPreferredSize(new java.awt.Dimension(1200, 650));
+        setMaximumSize(new java.awt.Dimension(1200, 700));
+        setMinimumSize(new java.awt.Dimension(1200, 700));
+        setPreferredSize(new java.awt.Dimension(1200, 700));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        receipt_area.setBackground(new java.awt.Color(197, 214, 222));
+        receipt_area.setBackground(new java.awt.Color(204, 204, 204));
+        receipt_area.setMaximumSize(new java.awt.Dimension(420, 650));
+        receipt_area.setMinimumSize(new java.awt.Dimension(420, 650));
+        receipt_area.setPreferredSize(new java.awt.Dimension(420, 650));
+        receipt_area.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout receipt_areaLayout = new javax.swing.GroupLayout(receipt_area);
-        receipt_area.setLayout(receipt_areaLayout);
-        receipt_areaLayout.setHorizontalGroup(
-            receipt_areaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
-        );
-        receipt_areaLayout.setVerticalGroup(
-            receipt_areaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
-        );
+        category_sp1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        category_sp1.setToolTipText("");
+        category_sp1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        category_sp1.setMaximumSize(new java.awt.Dimension(420, 400));
+        category_sp1.setMinimumSize(new java.awt.Dimension(420, 400));
+        category_sp1.setPreferredSize(new java.awt.Dimension(420, 400));
+        category_sp1.setViewportView(c_content);
 
-        add(receipt_area, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 0, 500, 650));
+        c_container1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 0));
+
+        c_content1.setOpaque(false);
+        c_content1.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
+        c_container1.add(c_content1);
+
+        category_sp1.setViewportView(c_container1);
+
+        receipt_area.add(category_sp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, -1, -1));
+
+        add(receipt_area, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, 420, 650));
 
         menu_area.setBackground(new java.awt.Color(197, 214, 222));
         menu_area.setPreferredSize(new java.awt.Dimension(700, 580));
         menu_area.setLayout(new java.awt.CardLayout());
-        add(menu_area, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 700, 580));
+        add(menu_area, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 660, 580));
 
-        category_area.setBackground(new java.awt.Color(197, 214, 222));
-
+        category_sp.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         category_sp.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         category_sp.setPreferredSize(new java.awt.Dimension(660, 30));
         category_sp.setViewportView(c_content);
@@ -96,37 +107,22 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
         c_container.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 0));
 
         c_content.setOpaque(false);
-        c_content.setLayout(new java.awt.GridLayout(1, 0, 5, 0));
+        c_content.setLayout(new java.awt.GridLayout(1, 0, 10, 0));
         c_container.add(c_content);
 
         category_sp.setViewportView(c_container);
 
-        javax.swing.GroupLayout category_areaLayout = new javax.swing.GroupLayout(category_area);
-        category_area.setLayout(category_areaLayout);
-        category_areaLayout.setHorizontalGroup(
-            category_areaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(category_areaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(category_sp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        category_areaLayout.setVerticalGroup(
-            category_areaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(category_areaLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(category_sp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
-
-        add(category_area, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 70));
+        add(category_sp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel c_container;
+    private javax.swing.JPanel c_container1;
     private javax.swing.JPanel c_content;
-    private javax.swing.JPanel category_area;
+    private javax.swing.JPanel c_content1;
     private javax.swing.JScrollPane category_sp;
+    private javax.swing.JScrollPane category_sp1;
     private javax.swing.JPanel menu_area;
     private javax.swing.JPanel receipt_area;
     // End of variables declaration//GEN-END:variables

@@ -61,19 +61,19 @@ public class JP_MenuCard extends javax.swing.JPanel implements MouseListener{
         m_container = new javax.swing.JPanel();
         m_content = new javax.swing.JPanel();
 
-        setMaximumSize(new java.awt.Dimension(700, 580));
-        setMinimumSize(new java.awt.Dimension(700, 580));
-        setPreferredSize(new java.awt.Dimension(700, 580));
+        setMaximumSize(new java.awt.Dimension(660, 580));
+        setMinimumSize(new java.awt.Dimension(660, 580));
+        setPreferredSize(new java.awt.Dimension(660, 580));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         menu_sp.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        menu_sp.setMaximumSize(new java.awt.Dimension(700, 580));
-        menu_sp.setMinimumSize(new java.awt.Dimension(700, 580));
-        menu_sp.setPreferredSize(new java.awt.Dimension(700, 580));
+        menu_sp.setMaximumSize(new java.awt.Dimension(660, 580));
+        menu_sp.setMinimumSize(new java.awt.Dimension(660, 580));
+        menu_sp.setPreferredSize(new java.awt.Dimension(660, 580));
 
         m_container.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 0));
 
-        m_content.setLayout(new java.awt.GridLayout(0, 4, 10, 10));
+        m_content.setLayout(new java.awt.GridLayout(0, 3, 10, 10));
         m_container.add(m_content);
 
         menu_sp.setViewportView(m_container);

@@ -42,9 +42,9 @@ public class Item_Category extends javax.swing.JPanel {
         jl_category = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(22, 36, 49));
-        setMaximumSize(new java.awt.Dimension(150, 30));
-        setMinimumSize(new java.awt.Dimension(150, 30));
-        setPreferredSize(new java.awt.Dimension(150, 30));
+        setMaximumSize(new java.awt.Dimension(215, 30));
+        setMinimumSize(new java.awt.Dimension(215, 30));
+        setPreferredSize(new java.awt.Dimension(215, 30));
 
         jl_category.setBackground(new java.awt.Color(255, 255, 255));
         jl_category.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -56,11 +56,11 @@ public class Item_Category extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jl_category, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+            .addComponent(jl_category, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jl_category, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+            .addComponent(jl_category, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

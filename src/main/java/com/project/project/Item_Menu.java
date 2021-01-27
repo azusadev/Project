@@ -22,14 +22,14 @@ public class Item_Menu extends javax.swing.JPanel {
     
     public Item_Menu(String name) {
         initComponents();
-        jl_menu.setText("<html><div style='text-align: center;'>" + name + "<div></html");
+        jl_menu.setText("<html><div style='text-align: center;'>" + name + "</div></html>");
     }
 
     public Item_Menu(String name, double price) {
         initComponents();
         menuName = name;
         menuPrice = price;
-        jl_menu.setText("<html><div style='text-align: center;'>" + menuName + "<div></html");
+        jl_menu.setText("<html><div style='text-align: center;'>" + menuName + "</div></html>");
     }
     
     public String getMenuName()
@@ -50,34 +50,48 @@ public class Item_Menu extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jl_menu = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(22, 36, 49));
-        setMaximumSize(new java.awt.Dimension(165, 180));
-        setMinimumSize(new java.awt.Dimension(165, 180));
-        setPreferredSize(new java.awt.Dimension(165, 180));
+        setMaximumSize(new java.awt.Dimension(215, 100));
+        setMinimumSize(new java.awt.Dimension(215, 100));
+        setPreferredSize(new java.awt.Dimension(215, 100));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(22, 36, 49));
+        jPanel1.setMaximumSize(new java.awt.Dimension(215, 100));
+        jPanel1.setMinimumSize(new java.awt.Dimension(215, 100));
+        jPanel1.setOpaque(false);
+        jPanel1.setPreferredSize(new java.awt.Dimension(215, 100));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 215, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jl_menu.setBackground(new java.awt.Color(255, 255, 255));
         jl_menu.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jl_menu.setForeground(new java.awt.Color(255, 255, 255));
         jl_menu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jl_menu.setText("Menu");
-        jl_menu.setPreferredSize(new java.awt.Dimension(165, 180));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jl_menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jl_menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jl_menu.setMaximumSize(new java.awt.Dimension(215, 100));
+        jl_menu.setMinimumSize(new java.awt.Dimension(215, 100));
+        jl_menu.setPreferredSize(new java.awt.Dimension(215, 100));
+        add(jl_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
     public javax.swing.JLabel jl_menu;
     // End of variables declaration//GEN-END:variables
 }
