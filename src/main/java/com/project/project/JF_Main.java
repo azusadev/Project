@@ -104,7 +104,7 @@ public class JF_Main extends javax.swing.JFrame {
         jp_taskbar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 0, -1, 50));
 
         jp_buttons.setPreferredSize(new java.awt.Dimension(280, 50));
-        jp_buttons.setLayout(new java.awt.GridLayout());
+        jp_buttons.setLayout(new java.awt.GridLayout(1, 0));
 
         jp_menu.setBackground(new java.awt.Color(197, 214, 222));
         jp_menu.setPreferredSize(new java.awt.Dimension(70, 50));
