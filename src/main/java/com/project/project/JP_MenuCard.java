@@ -8,6 +8,7 @@ package com.project.project;
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,6 +18,7 @@ public class JP_MenuCard extends javax.swing.JPanel implements MouseListener{
 
     private JP_Menu parentMenu = null;
     private String categoryName;
+    private ArrayList<Item_Receipt> receipt = new ArrayList<>();
     /**
      * Creates new form JP_MenuCard
      */
@@ -61,15 +63,15 @@ public class JP_MenuCard extends javax.swing.JPanel implements MouseListener{
         m_container = new javax.swing.JPanel();
         m_content = new javax.swing.JPanel();
 
-        setMaximumSize(new java.awt.Dimension(660, 580));
-        setMinimumSize(new java.awt.Dimension(660, 580));
-        setPreferredSize(new java.awt.Dimension(660, 580));
+        setMaximumSize(new java.awt.Dimension(660, 550));
+        setMinimumSize(new java.awt.Dimension(660, 550));
+        setPreferredSize(new java.awt.Dimension(660, 550));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         menu_sp.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        menu_sp.setMaximumSize(new java.awt.Dimension(660, 580));
-        menu_sp.setMinimumSize(new java.awt.Dimension(660, 580));
-        menu_sp.setPreferredSize(new java.awt.Dimension(660, 580));
+        menu_sp.setMaximumSize(new java.awt.Dimension(660, 550));
+        menu_sp.setMinimumSize(new java.awt.Dimension(660, 550));
+        menu_sp.setPreferredSize(new java.awt.Dimension(660, 550));
 
         m_container.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 0));
 
@@ -88,12 +90,44 @@ public class JP_MenuCard extends javax.swing.JPanel implements MouseListener{
     private javax.swing.JScrollPane menu_sp;
     // End of variables declaration//GEN-END:variables
 
+    
+    public void removeReceipt(String name)
+    {
+        for (int i = 0; i < receipt.size(); i++) {
+            if(receipt.get(i).getMenuName().equals(name))
+            {
+                System.out.println( receipt.get(i).getMenuName() + " FOUND AND DELETED!");
+                parentMenu.r_content.remove(receipt.get(i));
+                receipt.remove(i);
+                break;
+            }
+        }
+        parentMenu.r_content.repaint();
+        parentMenu.r_content.revalidate();
+    }
+    
     @Override
     public void mouseReleased(MouseEvent e) {
         if(e.getComponent() instanceof Item_Menu)
         {
             Item_Menu temp = (Item_Menu) e.getComponent();
-            System.out.println("name:" + temp.getMenuName() + " price:"+ temp.getMenuPrice());
+            Item_Receipt t = new Item_Receipt(this, temp.getMenuName(), temp.getMenuPrice());
+            boolean got = false;
+            for (int i = 0; i < receipt.size(); i++) {
+                if(receipt.get(i).getMenuName().equals(t.getMenuName()))
+                {
+                    receipt.get(i).addQuantity();
+                    got = true;
+                    break;
+                }
+            }
+            if(!got) 
+            {
+                parentMenu.r_content.add(t);
+                receipt.add(t);
+            }
+            parentMenu.r_content.repaint();
+            parentMenu.r_content.revalidate();
         }
     }
 

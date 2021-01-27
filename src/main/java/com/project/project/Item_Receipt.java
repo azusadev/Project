@@ -11,13 +11,55 @@ package com.project.project;
  */
 public class Item_Receipt extends javax.swing.JPanel {
 
+    
+    private String m_name;
+    private double m_price;
+    private int m_quantity = 1;
+    private JP_MenuCard m_parent = null;
     /**
      * Creates new form Item_Receipt
      */
     public Item_Receipt() {
         initComponents();
     }
+    
+    public Item_Receipt(JP_MenuCard parent, String name, double price) {
+        initComponents();
+        m_name = name;
+        m_price = price;
+        menuName.setText(name);
+        menuPrice.setText((price * m_quantity) + "");
+        menuQuantity.setText(m_quantity + "");
+        m_parent = parent;
+    }
 
+
+    private void changeQuantity(int i)
+    {
+        m_quantity = Math.max(1, m_quantity + i);
+        menuPrice.setText((m_price * m_quantity )+ "");
+        menuQuantity.setText(m_quantity + "");
+    }
+    
+    public String getMenuName()
+    {
+        return m_name;
+    }
+    
+    public double getMenuPrice()
+    {
+        return m_price;
+    }
+    
+    public int getMenuQuantity()
+    {
+        return m_quantity;
+    }
+    
+    public void addQuantity()
+    {
+        changeQuantity(1);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,51 +69,82 @@ public class Item_Receipt extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        menuName = new javax.swing.JLabel();
+        menuQuantity = new javax.swing.JLabel();
+        subtract = new javax.swing.JLabel();
+        menuPrice = new javax.swing.JLabel();
+        delete = new javax.swing.JLabel();
+        add = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(510, 30));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("CHICKEN WINGS BREASST 1 PC");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 30));
+        menuName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        menuName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        menuName.setText("CHICKEN WINGS BREASST 1 PC");
+        add(menuName, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 30));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("1");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 40, 30));
+        menuQuantity.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        menuQuantity.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        menuQuantity.setText("1");
+        add(menuQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 40, 30));
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/subtract-black.png"))); // NOI18N
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 30, 30));
+        subtract.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        subtract.setIcon(new javax.swing.ImageIcon(getClass().getResource("/subtract-black.png"))); // NOI18N
+        subtract.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                subtractMouseReleased(evt);
+            }
+        });
+        add(subtract, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 30, 30));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel4.setText("20.00");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 70, 30));
+        menuPrice.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        menuPrice.setText("20.00");
+        add(menuPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 70, 30));
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete-black.png"))); // NOI18N
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 30, 30));
+        delete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete-black.png"))); // NOI18N
+        delete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                deleteMouseReleased(evt);
+            }
+        });
+        add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 30, 30));
 
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/add-black.png"))); // NOI18N
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 30, 30));
+        add.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/add-black.png"))); // NOI18N
+        add.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                addMouseReleased(evt);
+            }
+        });
+        add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 30, 30));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseReleased
+        // TODO add your handling code here:
+        changeQuantity(1);
+    }//GEN-LAST:event_addMouseReleased
+
+    private void subtractMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subtractMouseReleased
+        // TODO add your handling code here:
+        changeQuantity(-1);
+    }//GEN-LAST:event_subtractMouseReleased
+
+    private void deleteMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseReleased
+        // TODO add your handling code here:
+        m_parent.removeReceipt(m_name);
+        System.out.println("DELETE");
+    }//GEN-LAST:event_deleteMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel add;
+    private javax.swing.JLabel delete;
+    private javax.swing.JLabel menuName;
+    private javax.swing.JLabel menuPrice;
+    private javax.swing.JLabel menuQuantity;
+    private javax.swing.JLabel subtract;
     // End of variables declaration//GEN-END:variables
 }

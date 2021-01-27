@@ -186,6 +186,9 @@ public class JF_Main extends javax.swing.JFrame {
         getContentPane().add(jp_taskbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 50));
 
         jp_mainArea.setBackground(new java.awt.Color(197, 214, 222));
+        jp_mainArea.setMaximumSize(new java.awt.Dimension(1200, 650));
+        jp_mainArea.setMinimumSize(new java.awt.Dimension(1200, 650));
+        jp_mainArea.setPreferredSize(new java.awt.Dimension(1200, 650));
         jp_mainArea.setLayout(new java.awt.CardLayout());
         getContentPane().add(jp_mainArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1200, 650));
 

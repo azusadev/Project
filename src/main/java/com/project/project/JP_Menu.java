@@ -66,43 +66,29 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
         receipt_sp = new javax.swing.JScrollPane();
         r_container = new javax.swing.JPanel();
         r_content = new javax.swing.JPanel();
-        item_Receipt1 = new com.project.project.Item_Receipt();
-        item_Receipt2 = new com.project.project.Item_Receipt();
-        item_Receipt3 = new com.project.project.Item_Receipt();
-        item_Receipt4 = new com.project.project.Item_Receipt();
-        item_Receipt5 = new com.project.project.Item_Receipt();
-        item_Receipt6 = new com.project.project.Item_Receipt();
-        item_Receipt7 = new com.project.project.Item_Receipt();
-        item_Receipt8 = new com.project.project.Item_Receipt();
-        item_Receipt9 = new com.project.project.Item_Receipt();
-        item_Receipt10 = new com.project.project.Item_Receipt();
-        item_Receipt11 = new com.project.project.Item_Receipt();
-        item_Receipt12 = new com.project.project.Item_Receipt();
-        item_Receipt13 = new com.project.project.Item_Receipt();
-        item_Receipt14 = new com.project.project.Item_Receipt();
-        item_Receipt15 = new com.project.project.Item_Receipt();
-        item_Receipt16 = new com.project.project.Item_Receipt();
-        item_Receipt17 = new com.project.project.Item_Receipt();
-        item_Receipt18 = new com.project.project.Item_Receipt();
-        item_Receipt19 = new com.project.project.Item_Receipt();
-        item_Receipt20 = new com.project.project.Item_Receipt();
-        item_Receipt21 = new com.project.project.Item_Receipt();
-        item_Receipt22 = new com.project.project.Item_Receipt();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         menu_area = new javax.swing.JPanel();
         category_sp = new javax.swing.JScrollPane();
         c_container = new javax.swing.JPanel();
         c_content = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(197, 214, 222));
-        setMaximumSize(new java.awt.Dimension(1200, 700));
-        setMinimumSize(new java.awt.Dimension(1200, 700));
-        setPreferredSize(new java.awt.Dimension(1200, 700));
+        setMaximumSize(new java.awt.Dimension(1200, 650));
+        setMinimumSize(new java.awt.Dimension(1200, 650));
+        setPreferredSize(new java.awt.Dimension(1200, 650));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         receipt_area.setBackground(new java.awt.Color(204, 204, 204));
-        receipt_area.setMaximumSize(new java.awt.Dimension(510, 650));
-        receipt_area.setMinimumSize(new java.awt.Dimension(510, 650));
-        receipt_area.setPreferredSize(new java.awt.Dimension(510, 650));
+        receipt_area.setMaximumSize(new java.awt.Dimension(510, 600));
+        receipt_area.setMinimumSize(new java.awt.Dimension(510, 600));
+        receipt_area.setPreferredSize(new java.awt.Dimension(510, 600));
         receipt_area.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         receipt_sp.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -117,41 +103,51 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
 
         r_content.setOpaque(false);
         r_content.setLayout(new java.awt.GridLayout(0, 1, 0, 10));
-        r_content.add(item_Receipt1);
-        r_content.add(item_Receipt2);
-        r_content.add(item_Receipt3);
-        r_content.add(item_Receipt4);
-        r_content.add(item_Receipt5);
-        r_content.add(item_Receipt6);
-        r_content.add(item_Receipt7);
-        r_content.add(item_Receipt8);
-        r_content.add(item_Receipt9);
-        r_content.add(item_Receipt10);
-        r_content.add(item_Receipt11);
-        r_content.add(item_Receipt12);
-        r_content.add(item_Receipt13);
-        r_content.add(item_Receipt14);
-        r_content.add(item_Receipt15);
-        r_content.add(item_Receipt16);
-        r_content.add(item_Receipt17);
-        r_content.add(item_Receipt18);
-        r_content.add(item_Receipt19);
-        r_content.add(item_Receipt20);
-        r_content.add(item_Receipt21);
-        r_content.add(item_Receipt22);
-
         r_container.add(r_content);
 
         receipt_sp.setViewportView(r_container);
 
         receipt_area.add(receipt_sp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, -1, -1));
 
-        add(receipt_area, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 510, 650));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Receipt");
+        receipt_area.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 150, -1));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("Price");
+        receipt_area.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("Total:");
+        receipt_area.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setText("Quantity");
+        receipt_area.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setText("Item");
+        receipt_area.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setText("Tax:");
+        receipt_area.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, 40, -1));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setText("0.00");
+        receipt_area.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 530, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setText("0.00");
+        receipt_area.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 500, 40, -1));
+
+        add(receipt_area, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 510, 600));
 
         menu_area.setBackground(new java.awt.Color(197, 214, 222));
-        menu_area.setPreferredSize(new java.awt.Dimension(700, 580));
+        menu_area.setPreferredSize(new java.awt.Dimension(660, 550));
         menu_area.setLayout(new java.awt.CardLayout());
-        add(menu_area, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 660, 580));
+        add(menu_area, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
         category_sp.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         category_sp.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
@@ -166,7 +162,7 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
 
         category_sp.setViewportView(c_container);
 
-        add(category_sp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        add(category_sp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -174,31 +170,17 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
     private javax.swing.JPanel c_container;
     private javax.swing.JPanel c_content;
     private javax.swing.JScrollPane category_sp;
-    private com.project.project.Item_Receipt item_Receipt1;
-    private com.project.project.Item_Receipt item_Receipt10;
-    private com.project.project.Item_Receipt item_Receipt11;
-    private com.project.project.Item_Receipt item_Receipt12;
-    private com.project.project.Item_Receipt item_Receipt13;
-    private com.project.project.Item_Receipt item_Receipt14;
-    private com.project.project.Item_Receipt item_Receipt15;
-    private com.project.project.Item_Receipt item_Receipt16;
-    private com.project.project.Item_Receipt item_Receipt17;
-    private com.project.project.Item_Receipt item_Receipt18;
-    private com.project.project.Item_Receipt item_Receipt19;
-    private com.project.project.Item_Receipt item_Receipt2;
-    private com.project.project.Item_Receipt item_Receipt20;
-    private com.project.project.Item_Receipt item_Receipt21;
-    private com.project.project.Item_Receipt item_Receipt22;
-    private com.project.project.Item_Receipt item_Receipt3;
-    private com.project.project.Item_Receipt item_Receipt4;
-    private com.project.project.Item_Receipt item_Receipt5;
-    private com.project.project.Item_Receipt item_Receipt6;
-    private com.project.project.Item_Receipt item_Receipt7;
-    private com.project.project.Item_Receipt item_Receipt8;
-    private com.project.project.Item_Receipt item_Receipt9;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel menu_area;
     private javax.swing.JPanel r_container;
-    private javax.swing.JPanel r_content;
+    public javax.swing.JPanel r_content;
     private javax.swing.JPanel receipt_area;
     private javax.swing.JScrollPane receipt_sp;
     // End of variables declaration//GEN-END:variables
