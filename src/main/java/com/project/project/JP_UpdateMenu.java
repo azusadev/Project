@@ -113,8 +113,9 @@ public class JP_UpdateMenu extends javax.swing.JPanel {
 
             if(value == JOptionPane.OK_OPTION && !tempCategory.categoryName.getText().isEmpty())
             {
-                Item_AddCategory temp = new Item_AddCategory(this, tempCategory.categoryName.getText());
+                Item_AddCategory temp = new Item_AddCategory(tempCategory.categoryName.getText());
                 c_content.add(temp);
+                categoryList.add(temp);
                 c_content.repaint();
                 c_content.revalidate();
             }
@@ -123,17 +124,6 @@ public class JP_UpdateMenu extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jp_addcategoryMouseReleased
 
-    public void removeCategory(Item_AddCategory category)
-    {
-        if(categoryList.contains(category))
-        {
-            categoryList.remove(category);
-            c_content.remove(category);
-            c_content.repaint();
-            c_content.revalidate();
-        }
-    }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel c_container;
     private javax.swing.JPanel c_content;

@@ -16,9 +16,8 @@ import javax.swing.SwingUtilities;
 public class Item_AddCategory extends javax.swing.JPanel {
 
     private boolean isOpen = false;
-    private ArrayList<Item_AddMenu> menuList;
+    private ArrayList<Item_AddMenu> menuList = new ArrayList<>();;
     private String categoryName;
-    JP_UpdateMenu parent;
     /**
      * Creates new form Item_AddCategory
      */
@@ -28,10 +27,8 @@ public class Item_AddCategory extends javax.swing.JPanel {
         jp_content.setVisible(false);
     }
     
-    public Item_AddCategory(JP_UpdateMenu p, String name) {
+    public Item_AddCategory(String name) {
         initComponents();
-        parent =  p;
-        this.menuList = new ArrayList<>();
         categoryName = name;
         jl_categoryname.setText(name);
         jp_content.setVisible(false);
@@ -150,9 +147,7 @@ public class Item_AddCategory extends javax.swing.JPanel {
 
     private void deleteMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseReleased
         // TODO add your handling code here:
-        parent.removeCategory(this);
     }//GEN-LAST:event_deleteMouseReleased
-
 
     public void removeMenu(Item_AddMenu menu)
     {
