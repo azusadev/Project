@@ -55,13 +55,13 @@ public class Item_AddMenu extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         price.setBackground(new java.awt.Color(255, 255, 255));
-        price.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        price.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         price.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         price.setText("2000.0");
         jPanel1.add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 230, 40));
 
         menu.setBackground(new java.awt.Color(255, 255, 255));
-        menu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        menu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         menu.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menu.setText("MenuName");
         jPanel1.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 420, 40));
