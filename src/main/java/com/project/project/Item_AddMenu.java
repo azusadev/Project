@@ -5,6 +5,9 @@
  */
 package com.project.project;
 
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author reden
@@ -94,6 +97,26 @@ public class Item_AddMenu extends javax.swing.JPanel {
 
     private void editMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseReleased
         // TODO add your handling code here:
+        try {
+            JOP_Menu tempMenu = new JOP_Menu();
+            tempMenu.menuName.setText(menuName);
+            tempMenu.menuPrice.setText(menuPrice + "");
+            int value = JOptionPane.showConfirmDialog(SwingUtilities.getWindowAncestor(this),
+                            tempMenu,
+                            "Edit Menu",
+                            JOptionPane.OK_CANCEL_OPTION,
+                            JOptionPane.PLAIN_MESSAGE);
+
+            if(value == JOptionPane.OK_OPTION && !tempMenu.menuName.getText().isEmpty() && !tempMenu.menuPrice.getText().isEmpty())
+            {
+                menuName = tempMenu.menuName.getText();
+                menuPrice = Double.parseDouble(tempMenu.menuPrice.getText());
+                menu.setText(menuName);
+                price.setText(menuPrice + "");
+            }
+
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_editMouseReleased
 
 

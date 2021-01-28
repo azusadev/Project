@@ -42,11 +42,11 @@ public class JP_MenuCard extends javax.swing.JPanel implements MouseListener{
         menu_sp.setBorder(null);
         categoryName = name;
         parentMenu = panel;
-        for (int i = 0; i < 30; i++) {
-            Item_Menu temp = new Item_Menu(categoryName + " Menu no." + (i+1), 200.00*(i+1));
-            temp.addMouseListener(this);
-            m_content.add(temp);
-        }
+//        for (int i = 0; i < 30; i++) {
+//            Item_Menu temp = new Item_Menu(categoryName + " Menu no." + (i+1), 200.00*(i+1));
+//            temp.addMouseListener(this);
+//            m_content.add(temp);
+//        }
     }
 
     /**

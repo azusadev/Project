@@ -110,7 +110,7 @@ public class JP_UpdateMenu extends javax.swing.JPanel {
         JOP_Category tempCategory = new JOP_Category();
         int value = JOptionPane.showConfirmDialog(SwingUtilities.getWindowAncestor(this),
                         tempCategory,
-                        "Add Account",
+                        "Add Category",
                         JOptionPane.OK_CANCEL_OPTION,
                         JOptionPane.PLAIN_MESSAGE);
 

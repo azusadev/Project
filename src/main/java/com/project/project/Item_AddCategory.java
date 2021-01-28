@@ -78,6 +78,11 @@ public class Item_AddCategory extends javax.swing.JPanel {
 
         edit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         edit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edit-white.png"))); // NOI18N
+        edit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                editMouseReleased(evt);
+            }
+        });
         jPanel1.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 0, 40, 50));
 
         delete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -122,7 +127,7 @@ public class Item_AddCategory extends javax.swing.JPanel {
              JOP_Menu tempMenu = new JOP_Menu();
             int value = JOptionPane.showConfirmDialog(SwingUtilities.getWindowAncestor(this),
                             tempMenu,
-                            "Add Account",
+                            "Add Menu",
                             JOptionPane.OK_CANCEL_OPTION,
                             JOptionPane.PLAIN_MESSAGE);
 
@@ -149,6 +154,27 @@ public class Item_AddCategory extends javax.swing.JPanel {
         // TODO add your handling code here:
         parent.removeCategory(this);
     }//GEN-LAST:event_deleteMouseReleased
+
+    private void editMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseReleased
+        // TODO add your handling code here:
+        try {
+            JOP_Category tempCategory = new JOP_Category();
+            tempCategory.categoryName.setText(categoryName);
+            int value = JOptionPane.showConfirmDialog(SwingUtilities.getWindowAncestor(this),
+                            tempCategory,
+                            "Edit Category",
+                            JOptionPane.OK_CANCEL_OPTION,
+                            JOptionPane.PLAIN_MESSAGE);
+
+            if(value == JOptionPane.OK_OPTION && !tempCategory.categoryName.getText().isEmpty())
+            {
+                categoryName = tempCategory.categoryName.getText();
+                jl_categoryname.setText(categoryName);
+            }
+
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_editMouseReleased
 
     public void removeMenu(Item_AddMenu menu)
     {

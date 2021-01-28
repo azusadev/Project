@@ -63,11 +63,11 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
         category_sp.setBorder(null);
         
         
-        for (int i = 0; i < 30; i++) {
-            System.out.println(i);
-            String name = "Category " + (i+1); 
-            addCategory(name);
-        }
+//        for (int i = 0; i < 30; i++) {
+//            System.out.println(i);
+//            String name = "Category " + (i+1); 
+//            addCategory(name);
+//        }
     }
 
     public void addCategory(String categoryName)
