@@ -31,6 +31,7 @@ public class JOP_Receipt extends javax.swing.JPanel {
         change.setText("PHP " +df.format(c));
         paymenttxt.setText("PHP " + df.format(payment));
         taxtxt.setText("PHP " +df.format(tx));
+        points.setText(df.format((t * 0.02)));
         lblOrderNumber.setText("000" + (int)(Math.random() * 100000 + 1) + "");
         for (int i = 0; i < receipt.size(); i++) {
             receiptContainer.add(new FinalReceipt(receipt.get(i).getMenuName(),receipt.get(i).getCurrentPrice() ,receipt.get(i).getMenuQuantity()));
@@ -68,12 +69,14 @@ public class JOP_Receipt extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        change = new javax.swing.JLabel();
+        points = new javax.swing.JLabel();
         total = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         paymenttxt = new javax.swing.JLabel();
         taxtxt = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        change = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(400, 30700));
         setMinimumSize(new java.awt.Dimension(400, 700));
@@ -97,11 +100,13 @@ public class JOP_Receipt extends javax.swing.JPanel {
         jLabel1.setPreferredSize(new java.awt.Dimension(400, 30));
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 400, 30));
 
+        lblTime.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTime.setText("Time dito");
-        jPanel1.add(lblTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 300, 50));
+        jPanel1.add(lblTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 300, 50));
 
+        lblDate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblDate.setText("Date:");
-        jPanel1.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 30, 50));
+        jPanel1.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 50, 50));
 
         jLabel2.setText("=======================================================");
         jLabel2.setMaximumSize(new java.awt.Dimension(400, 30));
@@ -109,13 +114,13 @@ public class JOP_Receipt extends javax.swing.JPanel {
         jLabel2.setPreferredSize(new java.awt.Dimension(400, 30));
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 400, 30));
 
-        currentuser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        currentuser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         currentuser.setText("yung may gamit ng system now.");
-        jPanel1.add(currentuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 230, 40));
+        jPanel1.add(currentuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 230, 40));
 
-        lblOrderNumber.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblOrderNumber.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblOrderNumber.setText("69");
-        jPanel1.add(lblOrderNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 220, 40));
+        jPanel1.add(lblOrderNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 220, 40));
 
         jLabel6.setText("=======================================================");
         jLabel6.setMaximumSize(new java.awt.Dimension(400, 30));
@@ -123,11 +128,11 @@ public class JOP_Receipt extends javax.swing.JPanel {
         jLabel6.setPreferredSize(new java.awt.Dimension(400, 30));
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 400, 30));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setText("Order#");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 60, 40));
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setText("Order#:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 60, 40));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Cashier:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 60, 40));
 
@@ -154,7 +159,7 @@ public class JOP_Receipt extends javax.swing.JPanel {
 
         footer.setMaximumSize(new java.awt.Dimension(400, 500));
         footer.setMinimumSize(new java.awt.Dimension(400, 500));
-        footer.setPreferredSize(new java.awt.Dimension(400, 200));
+        footer.setPreferredSize(new java.awt.Dimension(400, 250));
         footer.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -163,54 +168,64 @@ public class JOP_Receipt extends javax.swing.JPanel {
         jLabel9.setMaximumSize(new java.awt.Dimension(400, 30));
         jLabel9.setMinimumSize(new java.awt.Dimension(400, 30));
         jLabel9.setPreferredSize(new java.awt.Dimension(400, 30));
-        footer.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, -1, -1));
+        footer.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, -1, -1));
 
         jLabel3.setText("=======================================================");
-        footer.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 400, 50));
+        footer.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 400, 50));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel4.setText("Change:");
+        jLabel4.setText("Points Earned:");
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        footer.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 50, 30));
+        footer.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 90, 30));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel10.setText("Total Due:");
         jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        footer.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 150, 30));
+        footer.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 150, 30));
 
-        change.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        change.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        change.setText("0.00");
-        change.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        footer.add(change, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 240, 30));
+        points.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        points.setText("0.00");
+        points.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        footer.add(points, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 270, 30));
 
         total.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         total.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         total.setText("0.00");
         total.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        footer.add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 240, 30));
+        footer.add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 240, 30));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel11.setText("Payment:");
         jLabel11.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        footer.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 140, 30));
+        footer.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 140, 30));
 
         paymenttxt.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         paymenttxt.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         paymenttxt.setText("0.00");
         paymenttxt.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        footer.add(paymenttxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 230, 30));
+        footer.add(paymenttxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 230, 30));
 
         taxtxt.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         taxtxt.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         taxtxt.setText("0.00");
         taxtxt.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        footer.add(taxtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 240, 30));
+        footer.add(taxtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 240, 30));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel12.setText("VAT (12%):");
         jLabel12.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        footer.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 140, 30));
+        footer.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 140, 30));
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel13.setText("Change:");
+        jLabel13.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        footer.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 50, 30));
+
+        change.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        change.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        change.setText("0.00");
+        change.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        footer.add(change, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 240, 30));
 
         add(footer);
     }// </editor-fold>//GEN-END:initComponents
@@ -227,6 +242,7 @@ public class JOP_Receipt extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -240,6 +256,7 @@ public class JOP_Receipt extends javax.swing.JPanel {
     public javax.swing.JLabel lblOrderNumber;
     private javax.swing.JLabel lblTime;
     private javax.swing.JLabel paymenttxt;
+    private javax.swing.JLabel points;
     private javax.swing.JPanel receiptContainer;
     private javax.swing.JLabel taxtxt;
     private javax.swing.JLabel total;

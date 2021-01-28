@@ -137,6 +137,11 @@ public class JF_Main extends javax.swing.JFrame {
         switchuser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         switchuser.setForeground(new java.awt.Color(255, 255, 255));
         switchuser.setText("SWITCH USER >");
+        switchuser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                switchuserMouseReleased(evt);
+            }
+        });
         jp_taskbar.add(switchuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 0, 120, 50));
 
         currentuser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -253,6 +258,12 @@ public class JF_Main extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_formWindowClosed
+
+    private void switchuserMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_switchuserMouseReleased
+        JF_Login login = new JF_Login();
+        login.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_switchuserMouseReleased
 
     /**
      * @param args the command line arguments
