@@ -24,7 +24,6 @@ public class Receipt extends javax.swing.JFrame {
         lblTime.setText(now.toString());
         lblDate.setText(dtf.toString());
         
-        
     }
 
     /**
@@ -52,12 +51,6 @@ public class Receipt extends javax.swing.JFrame {
         Description1 = new javax.swing.JLabel();
         Description2 = new javax.swing.JLabel();
         receiptContainer = new javax.swing.JPanel();
-        finalReceipt = new com.project.project.FinalReceipt();
-        finalReceipt1 = new com.project.project.FinalReceipt();
-        finalReceipt2 = new com.project.project.FinalReceipt();
-        finalReceipt3 = new com.project.project.FinalReceipt();
-        finalReceipt4 = new com.project.project.FinalReceipt();
-        finalReceipt5 = new com.project.project.FinalReceipt();
 
         jLabel4.setText("jLabel3");
 
@@ -90,7 +83,7 @@ public class Receipt extends javax.swing.JFrame {
         jPanel1.add(lblTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 100, 50));
 
         lblDate.setText("Date dito");
-        jPanel1.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 100, 50));
+        jPanel1.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 100, 50));
 
         jLabel2.setText("=======================================================");
         jLabel2.setMaximumSize(new java.awt.Dimension(400, 30));
@@ -100,11 +93,11 @@ public class Receipt extends javax.swing.JFrame {
 
         currentuser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         currentuser.setText("yung may gamit ng system now.");
-        jPanel1.add(currentuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 230, 40));
+        jPanel1.add(currentuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 230, 40));
 
         lblOrderNumber.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblOrderNumber.setText("69");
-        jPanel1.add(lblOrderNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 80, 40));
+        jPanel1.add(lblOrderNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 80, 40));
 
         jLabel6.setText("=======================================================");
         jLabel6.setMaximumSize(new java.awt.Dimension(400, 30));
@@ -113,12 +106,12 @@ public class Receipt extends javax.swing.JFrame {
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 400, 30));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setText("Oder#");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 50, 40));
+        jLabel7.setText("Order#");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 60, 40));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setText("Cashier:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 60, 40));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 60, 40));
 
         Description.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Description.setText("Price");
@@ -126,7 +119,7 @@ public class Receipt extends javax.swing.JFrame {
 
         Description1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Description1.setText("Description");
-        jPanel1.add(Description1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 220, 30));
+        jPanel1.add(Description1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 220, 30));
 
         Description2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Description2.setText("Quantity");
@@ -141,13 +134,6 @@ public class Receipt extends javax.swing.JFrame {
         receiptContainer.setMinimumSize(new java.awt.Dimension(0, 0));
         receiptContainer.setPreferredSize(new java.awt.Dimension(400, 250));
         receiptContainer.setLayout(new javax.swing.BoxLayout(receiptContainer, javax.swing.BoxLayout.PAGE_AXIS));
-        receiptContainer.add(finalReceipt);
-        receiptContainer.add(finalReceipt1);
-        receiptContainer.add(finalReceipt2);
-        receiptContainer.add(finalReceipt3);
-        receiptContainer.add(finalReceipt4);
-        receiptContainer.add(finalReceipt5);
-
         getContentPane().add(receiptContainer);
 
         pack();
@@ -193,12 +179,6 @@ public class Receipt extends javax.swing.JFrame {
     private javax.swing.JLabel Description1;
     private javax.swing.JLabel Description2;
     private javax.swing.JLabel currentuser;
-    private com.project.project.FinalReceipt finalReceipt;
-    private com.project.project.FinalReceipt finalReceipt1;
-    private com.project.project.FinalReceipt finalReceipt2;
-    private com.project.project.FinalReceipt finalReceipt3;
-    private com.project.project.FinalReceipt finalReceipt4;
-    private com.project.project.FinalReceipt finalReceipt5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

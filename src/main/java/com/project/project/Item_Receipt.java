@@ -5,6 +5,9 @@
  */
 package com.project.project;
 
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author reden
@@ -17,9 +20,25 @@ public class Item_Receipt extends javax.swing.JPanel {
     private int m_quantity = 1;
     private double m_currentPrice = 0.00;
     private JP_MenuCard m_parent = null;
+
+    
+    
+    
+    public String getM_name() {
+        return m_name;
+    }
+
+    public int getM_quantity() {
+        return m_quantity;
+    }
+
     /**
      * Creates new form Item_Receipt
      */
+    public double getM_currentPrice() {
+        return m_currentPrice;
+    }
+
     public Item_Receipt() {
         initComponents();
     }
@@ -143,8 +162,38 @@ public class Item_Receipt extends javax.swing.JPanel {
 
     private void deleteMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseReleased
         // TODO add your handling code here:
-        m_parent.removeReceipt(m_name);
-        System.out.println("DELETE");
+  
+        JOP_ConfirmDelete confirmDelete = new JOP_ConfirmDelete();
+        int value = JOptionPane.showConfirmDialog(SwingUtilities.getWindowAncestor(this),
+                        confirmDelete,
+                        "Confirm Delete",
+                        JOptionPane.OK_CANCEL_OPTION,
+                        JOptionPane.PLAIN_MESSAGE);
+
+        if(value == JOptionPane.OK_OPTION && !confirmDelete.username.getText().isEmpty() && !confirmDelete.password.getText().isEmpty())
+        {
+            String user = "";
+            String pass ="";
+            String type = "";
+            Database.LoadAccount("Accounts");
+            for (int i = 0; i < Database.loadAccounts.size(); i++) {
+                if(Database.loadAccounts.get(i).getUsername().equals(confirmDelete.username.getText()))
+                {
+                    user = Database.loadAccounts.get(i).getUsername();
+                    pass = Database.loadAccounts.get(i).getPassword();
+                    type = Database.loadAccounts.get(i).getType();
+                    break;
+                }
+            }
+            if(confirmDelete.username.getText().equals(user) && confirmDelete.password.getText().equals(pass))
+            {
+                if(type.equals("Manager"))
+                {
+                    m_parent.removeReceipt(m_name);
+                    System.out.println("DELETE");
+                }
+            }
+        }
     }//GEN-LAST:event_deleteMouseReleased
 
 

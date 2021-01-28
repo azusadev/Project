@@ -23,7 +23,7 @@ public class Item_Category extends javax.swing.JPanel {
     
     public Item_Category(String name) {
         initComponents();
-        this.setBackground(ColorTheme.accentColor);
+        this.setBackground(ColorTheme.primaryColor);
         setCategory(name);
 
     }

@@ -6,6 +6,7 @@
 package com.project.project;
 
 import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
@@ -18,31 +19,48 @@ public class JF_Main extends javax.swing.JFrame {
     
     private JPanel selectedButton = null;
     private String currentUser;
-    
+    private String type;
     /**
      * Creates new form JF_Main
      */
     public JF_Main() {
-       initComponents();
-       selectedButton = jp_menu;
-       jp_mainArea.add(new JP_Menu(),"menu");
-       jp_mainArea.add(new JP_UpdateMenu(),"stocks");
-       jp_mainArea.add(new JP_Accounts(),"accounts");
-
-       jp_buttons.setBackground(ColorTheme.primaryColor);
-    }
-
-    
-    public JF_Main(String user) {
         initComponents();
-        currentUser = user;
-        currentuser.setText(user);
         selectedButton = jp_menu;
         jp_mainArea.add(new JP_Menu(),"menu");
         jp_mainArea.add(new JP_UpdateMenu(),"stocks");
         jp_mainArea.add(new JP_Accounts(),"accounts");
-
         jp_buttons.setBackground(ColorTheme.primaryColor);
+        jp_taskbar.setBackground(ColorTheme.primaryColor);
+        jp_stocks.setBackground(ColorTheme.primaryColor);
+        jp_accounts.setBackground(ColorTheme.primaryColor);
+        jp_menu.setBackground(ColorTheme.secondaryColor);
+        jp_buttons.setBackground(ColorTheme.primaryColor);
+    }
+
+    
+    public JF_Main(String user, String type) {
+        initComponents();
+        currentUser = user;
+        currentuser.setText(user);
+        Database.currentUser = user;
+        this.type =  type;
+        selectedButton = jp_menu;
+        jp_mainArea.add(new JP_Menu(),"menu");
+        jp_mainArea.add(new JP_UpdateMenu(),"stocks");
+        jp_mainArea.add(new JP_Accounts(),"accounts");
+        jp_buttons.setBackground(ColorTheme.primaryColor);
+        jp_taskbar.setBackground(ColorTheme.primaryColor);
+        jp_stocks.setBackground(ColorTheme.primaryColor);
+        jp_accounts.setBackground(ColorTheme.primaryColor);
+        jp_menu.setBackground(ColorTheme.secondaryColor);
+        if(type.equals("Cashier"))
+        {
+            jp_buttons.remove(jp_stocks);
+            jp_buttons.remove(jp_accounts);
+            jp_buttons.setSize(new Dimension(70, 50));
+            jp_buttons.repaint();
+            jp_buttons.revalidate();
+        }
     }
 
     private void selectButton(String s)
@@ -126,10 +144,10 @@ public class JF_Main extends javax.swing.JFrame {
         currentuser.setText("Admin");
         jp_taskbar.add(currentuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 0, 140, 50));
 
-        jp_buttons.setPreferredSize(new java.awt.Dimension(280, 50));
-        jp_buttons.setLayout(new javax.swing.BoxLayout(jp_buttons, javax.swing.BoxLayout.LINE_AXIS));
+        jp_buttons.setMinimumSize(new java.awt.Dimension(0, 0));
+        jp_buttons.setPreferredSize(new java.awt.Dimension(0, 0));
 
-        jp_menu.setBackground(new java.awt.Color(197, 214, 222));
+        jp_menu.setBackground(new java.awt.Color(255, 255, 255));
         jp_menu.setPreferredSize(new java.awt.Dimension(70, 50));
         jp_menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -144,8 +162,6 @@ public class JF_Main extends javax.swing.JFrame {
             }
         });
         jp_menu.add(menuIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        jp_buttons.add(jp_menu);
 
         jp_stocks.setBackground(new java.awt.Color(22, 36, 49));
         jp_stocks.setPreferredSize(new java.awt.Dimension(70, 50));
@@ -164,8 +180,6 @@ public class JF_Main extends javax.swing.JFrame {
         });
         jp_stocks.add(stocksIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jp_buttons.add(jp_stocks);
-
         jp_accounts.setBackground(new java.awt.Color(22, 36, 49));
         jp_accounts.setPreferredSize(new java.awt.Dimension(70, 50));
         jp_accounts.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -183,7 +197,23 @@ public class JF_Main extends javax.swing.JFrame {
         });
         jp_accounts.add(accountsIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jp_buttons.add(jp_accounts);
+        javax.swing.GroupLayout jp_buttonsLayout = new javax.swing.GroupLayout(jp_buttons);
+        jp_buttons.setLayout(jp_buttonsLayout);
+        jp_buttonsLayout.setHorizontalGroup(
+            jp_buttonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_buttonsLayout.createSequentialGroup()
+                .addComponent(jp_menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jp_stocks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jp_accounts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jp_buttonsLayout.setVerticalGroup(
+            jp_buttonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jp_stocks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jp_accounts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         jp_taskbar.add(jp_buttons, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 50));
 
@@ -194,7 +224,7 @@ public class JF_Main extends javax.swing.JFrame {
 
         getContentPane().add(jp_taskbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 50));
 
-        jp_mainArea.setBackground(new java.awt.Color(197, 214, 222));
+        jp_mainArea.setBackground(new java.awt.Color(255, 255, 255));
         jp_mainArea.setMaximumSize(new java.awt.Dimension(1200, 650));
         jp_mainArea.setMinimumSize(new java.awt.Dimension(1200, 650));
         jp_mainArea.setPreferredSize(new java.awt.Dimension(1200, 650));

@@ -37,7 +37,8 @@ public class JP_Accounts extends javax.swing.JPanel {
         updatemenu_sp.getViewport().setBorder(null);
         updatemenu_sp.setViewportBorder(null);
         updatemenu_sp.setBorder(null);
-        
+        jp_addaccount.setBackground(ColorTheme.primaryColor);
+        this.setBackground(ColorTheme.secondaryColor);
         Database.LoadAccount("Accounts");
         for (int i = 0; i < Database.loadAccounts.size(); i++) {
             addAccount(Database.loadAccounts.get(i).getUsername(),Database.loadAccounts.get(i).getPassword(),Database.loadAccounts.get(i).getType());
@@ -74,6 +75,7 @@ public class JP_Accounts extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1200, 650));
         setMinimumSize(new java.awt.Dimension(1200, 650));
         setPreferredSize(new java.awt.Dimension(1200, 650));

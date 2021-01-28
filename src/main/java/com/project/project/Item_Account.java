@@ -61,6 +61,7 @@ public class Item_Account extends javax.swing.JPanel {
         username_txt.setText(username);
         type_txt.setText(type);
         password_txt.setText(password);
+
     }
 
     /**

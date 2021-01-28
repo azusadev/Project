@@ -18,6 +18,7 @@ import java.util.Scanner;
  * @author reden
  */
 public class Database {
+    public static String currentUser = "";
     public static JP_Menu mainMenu = null;
     public static JP_UpdateMenu dbMenu = null;
     public static ArrayList<CategoryInfo> categories = new ArrayList<>();

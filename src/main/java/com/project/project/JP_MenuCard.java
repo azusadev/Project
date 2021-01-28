@@ -8,6 +8,7 @@ package com.project.project;
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -184,10 +185,11 @@ public class JP_MenuCard extends javax.swing.JPanel implements MouseListener{
             System.out.println(r.getCurrentPrice() + "");
         }
         parentMenu.setTaxAmount(t * POS_Constants.taxRate);
-        parentMenu.setTotalAmount(t - parentMenu.getTaxAmount());
+        parentMenu.setTotalAmount(t + parentMenu.getTaxAmount());
         System.out.println(parentMenu.getTaxAmount() + "---" + parentMenu.getTotalAmount());
-        parentMenu.jl_tax.setText(parentMenu.getTaxAmount() + "");
-        parentMenu.jl_total.setText(parentMenu.getTotalAmount() + "");
+        DecimalFormat df = new DecimalFormat("#.##");
+        parentMenu.jl_tax.setText(df.format(parentMenu.getTaxAmount()));
+        parentMenu.jl_total.setText(df.format(parentMenu.getTotalAmount()));
         parentMenu.jl_tax.repaint();        
         parentMenu.jl_tax.revalidate();
         parentMenu.jl_total.repaint();        

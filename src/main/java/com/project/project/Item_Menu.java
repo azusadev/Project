@@ -28,6 +28,7 @@ public class Item_Menu extends javax.swing.JPanel {
     public Item_Menu(String name, double price) {
         initComponents();
         setMenu(name, price);
+        this.setBackground(ColorTheme.primaryColor);
     }
     
     public String getMenuName()

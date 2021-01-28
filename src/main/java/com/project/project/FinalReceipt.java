@@ -14,8 +14,11 @@ public class FinalReceipt extends javax.swing.JPanel {
     /**
      * Creates new form FinalReceipt
      */
-    public FinalReceipt() {
+    public FinalReceipt(String n, double p, int q) {
         initComponents();
+        Name.setText(n);
+        price.setText(p + "");
+        quantity.setText(q  + "");
     }
 
     /**
@@ -28,9 +31,9 @@ public class FinalReceipt extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        Name = new javax.swing.JLabel();
+        quantity = new javax.swing.JLabel();
+        price = new javax.swing.JLabel();
 
         jLabel3.setText("Price");
 
@@ -39,30 +42,30 @@ public class FinalReceipt extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(400, 30));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Order Name");
-        jLabel1.setMaximumSize(new java.awt.Dimension(220, 30));
-        jLabel1.setMinimumSize(new java.awt.Dimension(220, 30));
-        jLabel1.setPreferredSize(new java.awt.Dimension(220, 30));
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 30));
+        Name.setText("Order Name");
+        Name.setMaximumSize(new java.awt.Dimension(220, 30));
+        Name.setMinimumSize(new java.awt.Dimension(220, 30));
+        Name.setPreferredSize(new java.awt.Dimension(220, 30));
+        add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 210, 40));
 
-        jLabel2.setText("Price");
-        jLabel2.setMaximumSize(new java.awt.Dimension(80, 30));
-        jLabel2.setMinimumSize(new java.awt.Dimension(80, 30));
-        jLabel2.setPreferredSize(new java.awt.Dimension(80, 30));
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 80, 30));
+        quantity.setText("Price");
+        quantity.setMaximumSize(new java.awt.Dimension(80, 30));
+        quantity.setMinimumSize(new java.awt.Dimension(80, 30));
+        quantity.setPreferredSize(new java.awt.Dimension(80, 30));
+        add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 80, 40));
 
-        jLabel4.setText("Price");
-        jLabel4.setMaximumSize(new java.awt.Dimension(80, 30));
-        jLabel4.setMinimumSize(new java.awt.Dimension(80, 30));
-        jLabel4.setPreferredSize(new java.awt.Dimension(80, 30));
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 80, 30));
+        price.setText("Price");
+        price.setMaximumSize(new java.awt.Dimension(80, 30));
+        price.setMinimumSize(new java.awt.Dimension(80, 30));
+        price.setPreferredSize(new java.awt.Dimension(80, 30));
+        add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 80, 40));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel Name;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel price;
+    private javax.swing.JLabel quantity;
     // End of variables declaration//GEN-END:variables
 }

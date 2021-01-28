@@ -41,6 +41,7 @@ public class Item_AddCategory extends javax.swing.JPanel {
         categoryName = name;
         jl_categoryname.setText(name);
         jp_content.setVisible(false);
+        jPanel1.setBackground(ColorTheme.accentColor);
     }
 
 

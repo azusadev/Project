@@ -37,6 +37,7 @@ public class JP_UpdateMenu extends javax.swing.JPanel {
         updatemenu_sp.getViewport().setBorder(null);
         updatemenu_sp.setViewportBorder(null);
         updatemenu_sp.setBorder(null);
+        jp_addcategory.setBackground(ColorTheme.primaryColor);
         Database.LoadToFile("Categories");
         for (int i = 0; i < Database.loadCategories.size(); i++) {
             addCategory(Database.loadCategories.get(i).getName());
