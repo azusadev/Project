@@ -55,7 +55,6 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
         r_container.setBackground(ColorTheme.secondaryColor);
         r_content.setBackground(ColorTheme.secondaryColor);
         jp_pay.setBackground(ColorTheme.primaryColor);
-        jp_voucher.setBackground(ColorTheme.primaryColor);
         receipt_sp.getVerticalScrollBar().setPreferredSize(new Dimension(0,0));
         receipt_sp.getVerticalScrollBar().setUnitIncrement(36);
         receipt_sp.getViewport().setBorder(null);
