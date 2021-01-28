@@ -196,9 +196,7 @@ public class Item_AddCategory extends javax.swing.JPanel {
 
     private void deleteMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseReleased
         // TODO add your handling code here:
-   
         parent.removeCategory(this);
-       
        
     }//GEN-LAST:event_deleteMouseReleased
 
@@ -257,6 +255,13 @@ public class Item_AddCategory extends javax.swing.JPanel {
                     }
                 }
                 break;
+                }
+            }
+            for (int i = 0; i < Database.mainMenu.getMenuCard().size(); i++) {
+                if(Database.mainMenu.getMenuCard().get(i).getCategoryName().equals(menu.getCategoryName()))
+                {
+                    Database.mainMenu.getMenuCard().get(i).removeMenuButton(menu.getMenuName());
+                    break;
                 }
             }
             Database.SaveToFile("Categories");

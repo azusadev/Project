@@ -71,11 +71,12 @@ public class JP_UpdateMenu extends javax.swing.JPanel {
             categoryList.add(temp);
             Database.mainMenu.addCategory(categoryName);
             c_content.add(temp);
+            c_content.repaint();
+            c_content.revalidate();
             Database.categories.add(new CategoryInfo(categoryName));
             Database.SaveToFile("Categories");
         }
-        c_content.repaint();
-        c_content.revalidate();
+     
     }
     
     
@@ -183,6 +184,7 @@ public class JP_UpdateMenu extends javax.swing.JPanel {
                     break;
                 }
             }
+            Database.mainMenu.deleteCategory(c.getCategoryName());
             Database.SaveToFile("Categories");
         }
     }
