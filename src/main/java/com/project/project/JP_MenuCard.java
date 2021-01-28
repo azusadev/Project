@@ -18,7 +18,7 @@ public class JP_MenuCard extends javax.swing.JPanel implements MouseListener{
 
     private JP_Menu parentMenu = null;
     private String categoryName;
-    private ArrayList<Item_Menu> menuButtons;
+    private ArrayList<Item_Menu> menuButtons = new ArrayList<>();
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
@@ -34,20 +34,14 @@ public class JP_MenuCard extends javax.swing.JPanel implements MouseListener{
     
     /**
      * Creates new form JP_MenuCard
+     * @param panel
+     * @param name
      */
-    public JP_MenuCard() {
-        initComponents();
-        menuButtons = new ArrayList<>();
-        this.setBackground(ColorTheme.secondaryColor);
-        m_container.setBackground(ColorTheme.secondaryColor);
-        m_content.setBackground(ColorTheme.secondaryColor);
-
-    }
     
     public JP_MenuCard(JP_Menu panel, String name) {
         initComponents();
         //setting category scroll pane
-        menuButtons = new ArrayList<>();
+       
         this.setBackground(ColorTheme.secondaryColor);
         m_container.setBackground(ColorTheme.secondaryColor);
         m_content.setBackground(ColorTheme.secondaryColor);
@@ -105,10 +99,10 @@ public class JP_MenuCard extends javax.swing.JPanel implements MouseListener{
     {
         Item_Menu temp = new Item_Menu(menuName, menuPrice);
         temp.addMouseListener(this);
+        menuButtons.add(temp);
         m_content.add(temp);
         m_content.repaint();
         m_content.revalidate();
-        menuButtons.add(temp);
     }
     
     public void editMenuButton(String oldMenu, String newMenu, double newPrice)

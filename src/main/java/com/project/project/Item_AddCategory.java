@@ -16,7 +16,7 @@ import javax.swing.SwingUtilities;
 public class Item_AddCategory extends javax.swing.JPanel {
 
     private boolean isOpen = false;
-    private ArrayList<Item_AddMenu> menuList;
+    private ArrayList<Item_AddMenu> menuList = new ArrayList<>();
 
   
     private String categoryName;
@@ -37,7 +37,6 @@ public class Item_AddCategory extends javax.swing.JPanel {
      */  
     public Item_AddCategory(JP_UpdateMenu p, String name) {
         initComponents();
-        this.menuList = new ArrayList<>();
         parent = p;
         categoryName = name;
         jl_categoryname.setText(name);
@@ -58,8 +57,10 @@ public class Item_AddCategory extends javax.swing.JPanel {
         if(!found)
         {
             Item_AddMenu temp = new Item_AddMenu(this, menuName, price);
-            jp_content.add(temp, 0);
             menuList.add(temp);
+            jp_content.add(temp, 0);
+            jp_content.repaint();
+            jp_content.revalidate();
             for(JP_MenuCard mc : Database.mainMenu.getMenuCard())
             {
                 if(mc.getCategoryName().equals(categoryName))
@@ -68,8 +69,7 @@ public class Item_AddCategory extends javax.swing.JPanel {
                     break;
                 }
             }
-            jp_content.repaint();
-            jp_content.revalidate();
+        
             for (int i = 0; i < Database.categories.size(); i++) {
                 if(Database.categories.get(i).getName().equals(categoryName))
                 {
@@ -77,9 +77,8 @@ public class Item_AddCategory extends javax.swing.JPanel {
                     break;
                 }
             }
-            Database.SaveToFile("Categories");
         }
-        
+        Database.SaveToFile("Categories");
     }
     
     private void Open()
@@ -181,7 +180,6 @@ public class Item_AddCategory extends javax.swing.JPanel {
             if(value == JOptionPane.OK_OPTION && !tempMenu.menuName.getText().isEmpty() && !tempMenu.menuPrice.getText().isEmpty())
             {
                 addMenu(tempMenu.menuName.getText(), Double.parseDouble(tempMenu.menuPrice.getText()));
-                
             }
 
         } catch (Exception e) {
@@ -196,8 +194,11 @@ public class Item_AddCategory extends javax.swing.JPanel {
 
     private void deleteMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseReleased
         // TODO add your handling code here:
+        for (int i = 0; i < menuList.size(); i++) {
+            removeMenu(menuList.get(i));
+        }
         parent.removeCategory(this);
-       
+        Database.SaveToFile("Categories");
     }//GEN-LAST:event_deleteMouseReleased
 
     private void editMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseReleased
@@ -220,7 +221,13 @@ public class Item_AddCategory extends javax.swing.JPanel {
                         break;
                     }
                 }
-                
+                for (int i = 0; i < Database.categories.size(); i++) {
+                    if(Database.categories.get(i).getName().equals(categoryName))
+                    {
+                        Database.categories.get(i).setName(tempCategory.categoryName.getText());
+                        break;
+                    }
+                }
                 Database.mainMenu.editCategory(categoryName, tempCategory.categoryName.getText());
                 categoryName = tempCategory.categoryName.getText();
                 jl_categoryname.setText(categoryName);
@@ -228,44 +235,46 @@ public class Item_AddCategory extends javax.swing.JPanel {
                 {
                     m.setCategoryName(categoryName);
                 }
-           
+                
             }
-
+            Database.SaveToFile("Categories");
         } catch (Exception e) {
         }
     }//GEN-LAST:event_editMouseReleased
 
-    public void removeMenu(Item_AddMenu menu)
+    public void removeMenu(Item_AddMenu m)
     {
-        if(menuList.contains(menu))
+        if(menuList.contains(m))
         {
             System.out.println("FOUND MENU!");
-            menuList.remove(menu);
-            jp_content.remove(menu);
+            menuList.remove(m);
+            jp_content.remove(m);
             jp_content.repaint();
             jp_content.revalidate();
             for (int i = 0; i < Database.categories.size(); i++) {
-            if(Database.categories.get(i).getName().equals(categoryName))
-            {
-                for (int j = 0; j < Database.categories.get(i).getMenus().size(); j++) {
-                    if( Database.categories.get(i).getMenus().get(j).getName().equals(menu.getMenuName()))
-                    {
-                        Database.categories.get(i).getMenus().remove(Database.categories.get(i).getMenus().get(j));
-                        break;
+                if(Database.categories.get(i).getName().equals(categoryName))
+                {
+                    for (int j = 0; j < Database.categories.get(i).getMenus().size(); j++) {
+                        if( Database.categories.get(i).getMenus().get(j).getName().equals(m.getMenuName()))
+                        {
+                            Database.categories.get(i).getMenus().remove(Database.categories.get(i).getMenus().get(j));
+                            break;
+                        }
                     }
-                }
                 break;
                 }
             }
+            
             for (int i = 0; i < Database.mainMenu.getMenuCard().size(); i++) {
-                if(Database.mainMenu.getMenuCard().get(i).getCategoryName().equals(menu.getCategoryName()))
+                if(Database.mainMenu.getMenuCard().get(i).getCategoryName().equals(m.getCategoryName()))
                 {
-                    Database.mainMenu.getMenuCard().get(i).removeMenuButton(menu.getMenuName());
+                    Database.mainMenu.getMenuCard().get(i).removeMenuButton(m.getMenuName());
                     break;
                 }
             }
-            Database.SaveToFile("Categories");
+            
         }
+        Database.SaveToFile("Categories");
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

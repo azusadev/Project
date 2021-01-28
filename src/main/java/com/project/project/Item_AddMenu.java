@@ -112,7 +112,6 @@ public class Item_AddMenu extends javax.swing.JPanel {
 
     private void deleteMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseReleased
         // TODO add your handling code here:
-    
         category.removeMenu(this);
     }//GEN-LAST:event_deleteMouseReleased
 
@@ -156,8 +155,9 @@ public class Item_AddMenu extends javax.swing.JPanel {
                 menuPrice = Double.parseDouble(tempMenu.menuPrice.getText());
                 menu.setText(menuName);
                 price.setText(menuPrice + "");
+ 
             }
-
+            Database.SaveToFile("Categories");
         } catch (Exception e) {
         }
     }//GEN-LAST:event_editMouseReleased

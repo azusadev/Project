@@ -22,8 +22,11 @@ public class Database {
     public static JP_UpdateMenu dbMenu = null;
     public static ArrayList<CategoryInfo> categories = new ArrayList<>();
     public static ArrayList<CategoryInfo> loadCategories = new ArrayList<>();
+    
+    
     public static void SaveToFile(String fileName)
     {
+        System.out.println("SAVING!");
         if(!fileName.isEmpty())
         {
             try {
@@ -33,25 +36,42 @@ public class Database {
                     {
                         System.out.println(fileName + " created!");
                     }
-                }else
+                }
+                else
                 {
+                    //Saving to category file
                     FileWriter fw = new FileWriter(file);
                     for (int i = 0; i < categories.size(); i++) {
-                        SaveToCategory(categories.get(i).getName());
                         fw.write(categories.get(i).getName() + "\n");
-                        File menu = new File(categories.get(i).getName() + ".txt");
-                        if(menu.delete())
-                        {
-                            for (int j = 0; j < categories.get(i).getMenus().size(); j++) {
-                                SaveToCategory(categories.get(i).getName(), categories.get(i).getMenus().get(j).getName(), categories.get(i).getMenus().get(j).getPrice());
-                            }
-                        }
+                        SaveToCategory(categories.get(i).getName());
                     }
                     fw.close();
                 }
                 
+               
             } catch (IOException e) {
                 
+            }
+        }
+    }
+    
+    public static void DeleteFile(String fileName)
+    {
+        if(!fileName.isEmpty())
+        {
+            try {
+                File file = new File(fileName + ".txt");
+                if(file.exists()){
+                    if( file.delete())
+                    {
+                        System.out.println(fileName + " DELETE SUCCESS!");                  
+                    }
+                }
+                else
+                {
+
+                }
+            } catch (Exception e) {
             }
         }
     }
@@ -69,30 +89,19 @@ public class Database {
                     }
                 }else
                 {
+                    
                 }
-            } catch (IOException e) {
-                
-            }
-        }
-    }
-    
-     public static void SaveToCategory(String fileName, String menuName, double menuPrice)
-    {
-        if(!fileName.isEmpty())
-        {
-            try {
-                File file = new File(fileName + ".txt");
-                if(!file.exists()){
-                    if(file.createNewFile())
+                FileWriter fw = new FileWriter(file);
+                for (int i = 0; i < categories.size(); i++) {
+                    if(categories.get(i).getName().equals(fileName))
                     {
-                        System.out.println(fileName + " created!");
+                        for (int j = 0; j < categories.get(i).getMenus().size(); j++) {
+                            fw.write( categories.get(i).getMenus().get(j).getName() +"," + categories.get(i).getMenus().get(j).getPrice()+ "\n");
+                        }
+                        break;
                     }
-                }else
-                {
-                    FileWriter fw = new FileWriter(file, true);
-                    fw.write(menuName +"," + menuPrice+ "\n");
-                    fw.close();
                 }
+                fw.close();
             } catch (IOException e) {
                 
             }

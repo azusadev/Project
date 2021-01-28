@@ -19,7 +19,7 @@ import javax.swing.SwingUtilities;
 public class JP_UpdateMenu extends javax.swing.JPanel {
 
     
-    private ArrayList<Item_AddCategory> categoryList;
+    private ArrayList<Item_AddCategory> categoryList = new ArrayList<>();
 
     public ArrayList<Item_AddCategory> getCategoryList() {
         return categoryList;
@@ -31,7 +31,6 @@ public class JP_UpdateMenu extends javax.swing.JPanel {
     public JP_UpdateMenu() {
         initComponents();
         Database.dbMenu = this;
-        this.categoryList = new ArrayList<>();
         this.setBackground(ColorTheme.secondaryColor);
         updatemenu_sp.getVerticalScrollBar().setPreferredSize(new Dimension(0,0));
         updatemenu_sp.getVerticalScrollBar().setUnitIncrement(36);
@@ -57,9 +56,8 @@ public class JP_UpdateMenu extends javax.swing.JPanel {
     public void addCategory(String categoryName)
     {
         boolean found = false;
-        for(Item_AddCategory ac : categoryList)
-        {
-            if(ac.getCategoryName().equals(categoryName))
+        for (int i = 0; i < categoryList.size(); i++) {
+            if(categoryList.get(i).getCategoryName().equals(categoryName))
             {
                 found = true;
                 break;
@@ -67,13 +65,13 @@ public class JP_UpdateMenu extends javax.swing.JPanel {
         }
         if(!found)
         {
+            Database.categories.add(new CategoryInfo(categoryName));
             Item_AddCategory temp = new Item_AddCategory(this, categoryName);
             categoryList.add(temp);
             Database.mainMenu.addCategory(categoryName);
             c_content.add(temp);
             c_content.repaint();
             c_content.revalidate();
-            Database.categories.add(new CategoryInfo(categoryName));
             Database.SaveToFile("Categories");
         }
      

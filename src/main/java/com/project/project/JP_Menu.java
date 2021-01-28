@@ -18,9 +18,9 @@ import java.util.ArrayList;
 public class JP_Menu extends javax.swing.JPanel implements MouseListener{
 
     private Item_Category selectedCategory = null;
-    private ArrayList<Item_Receipt> receipt;
-    private ArrayList<Item_Category> category;    
-    private ArrayList<JP_MenuCard> menuCard;
+    private ArrayList<Item_Receipt> receipt = new ArrayList<>();
+    private ArrayList<Item_Category> category = new ArrayList<>(); 
+    private ArrayList<JP_MenuCard> menuCard = new ArrayList<>();
     private double totalAmount = 0.00;
     private double taxAmount = 0.00;
 
@@ -42,9 +42,6 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
     public JP_Menu() {
         initComponents();
         Database.mainMenu = this;
-        this.receipt = new ArrayList<>();
-        this.category = new ArrayList<>();
-        this.menuCard = new ArrayList<>();
         this.setBackground(ColorTheme.secondaryColor);
         receipt_area.setBackground(ColorTheme.secondaryColor);
         menu_area.setBackground(ColorTheme.secondaryColor);
@@ -81,13 +78,14 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
     {
         Item_Category temp = new Item_Category(categoryName);
         temp.addMouseListener(this);
+        category.add(temp);
         c_content.add(temp);
         c_content.repaint();
         c_content.revalidate();
         JP_MenuCard tmc = new JP_MenuCard(this, categoryName);
-        menu_area.add(tmc, categoryName);
         menuCard.add(tmc);
-        if(category.size() < 1)
+        menu_area.add(tmc, categoryName);
+        if(category.size() <= 1)
         {
             selectedCategory = temp;
             selectedCategory.setBackground(ColorTheme.secondaryColor);
@@ -95,7 +93,6 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
             CardLayout c = (CardLayout)menu_area.getLayout();
             c.show(menu_area, categoryName);
         }
-        category.add(temp);
     }
     
     public void deleteCategory(String categoryName)
@@ -110,13 +107,22 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
                         CardLayout lay = (CardLayout)menu_area.getLayout();
                         lay.removeLayoutComponent(m);
                         menuCard.remove(m);
+                        
                         break;
                     }
                 }
+                category.remove(c);
+                if(category.size()>0) 
+                {
+                    selectedCategory = category.get(0);
+                    selectedCategory.setBackground(ColorTheme.secondaryColor);
+                    selectedCategory.getJLabelName().setForeground(ColorTheme.primaryColor);
+                }
+                CardLayout lay = (CardLayout)menu_area.getLayout();
+                lay.show(menu_area, selectedCategory.getCategoryName());
                 c_content.remove(c);
                 c_content.repaint();
                 c_content.revalidate();
-                category.remove(c);
                 break;
             }
         }
@@ -137,11 +143,11 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
                         lay.removeLayoutComponent(m);
                         lay.addLayoutComponent(m, newName);
                         lay.show(menu_area, selectedCategory.getCategoryName());
+                        selectedCategory.setBackground(ColorTheme.secondaryColor);
+                        selectedCategory.getJLabelName().setForeground(ColorTheme.primaryColor);
                         break;
                     }
-                   
                 }
-  
                 break;
             }
         }
@@ -376,7 +382,6 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
                 selectedCategory.setBackground(ColorTheme.primaryColor);
                 selectedCategory.getJLabelName().setForeground(ColorTheme.secondaryColor);
             }
-            
             selectedCategory = t;
             selectedCategory.setBackground(ColorTheme.secondaryColor);
             selectedCategory.getJLabelName().setForeground(ColorTheme.primaryColor);
