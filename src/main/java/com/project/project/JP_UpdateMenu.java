@@ -23,6 +23,7 @@ public class JP_UpdateMenu extends javax.swing.JPanel {
      */
     public JP_UpdateMenu() {
         initComponents();
+        this.categoryList = new ArrayList<>();
         this.setBackground(ColorTheme.secondaryColor);
         updatemenu_sp.getVerticalScrollBar().setPreferredSize(new Dimension(0,0));
         updatemenu_sp.getVerticalScrollBar().setUnitIncrement(36);
@@ -58,8 +59,11 @@ public class JP_UpdateMenu extends javax.swing.JPanel {
         updatemenu_sp.setMinimumSize(new java.awt.Dimension(1200, 560));
         updatemenu_sp.setPreferredSize(new java.awt.Dimension(1200, 560));
 
+        c_container.setMinimumSize(new java.awt.Dimension(1200, 560));
         c_container.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 0));
 
+        c_content.setMaximumSize(new java.awt.Dimension(300000, 300000));
+        c_content.setMinimumSize(new java.awt.Dimension(0, 0));
         c_content.setOpaque(false);
         c_content.setLayout(new javax.swing.BoxLayout(c_content, javax.swing.BoxLayout.PAGE_AXIS));
         c_container.add(c_content);
@@ -103,27 +107,35 @@ public class JP_UpdateMenu extends javax.swing.JPanel {
 
     private void jp_addcategoryMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_addcategoryMouseReleased
         // TODO add your handling code here:
-        try {
-            JOP_Category tempCategory = new JOP_Category();
-            int value = JOptionPane.showConfirmDialog(SwingUtilities.getWindowAncestor(this),
-                            tempCategory,
-                            "Add Account",
-                            JOptionPane.OK_CANCEL_OPTION,
-                            JOptionPane.PLAIN_MESSAGE);
+        JOP_Category tempCategory = new JOP_Category();
+        int value = JOptionPane.showConfirmDialog(SwingUtilities.getWindowAncestor(this),
+                        tempCategory,
+                        "Add Account",
+                        JOptionPane.OK_CANCEL_OPTION,
+                        JOptionPane.PLAIN_MESSAGE);
 
-            if(value == JOptionPane.OK_OPTION && !tempCategory.categoryName.getText().isEmpty())
-            {
-                Item_AddCategory temp = new Item_AddCategory(tempCategory.categoryName.getText());
-                c_content.add(temp);
-                categoryList.add(temp);
-                c_content.repaint();
-                c_content.revalidate();
-            }
-
-        } catch (Exception e) {
+        if(value == JOptionPane.OK_OPTION && !tempCategory.categoryName.getText().isEmpty())
+        {
+            Item_AddCategory temp = new Item_AddCategory(this, tempCategory.categoryName.getText());
+            categoryList.add(temp);
+            c_content.add(temp);
+            c_content.repaint();
+            c_content.revalidate();
         }
     }//GEN-LAST:event_jp_addcategoryMouseReleased
 
+    public void removeCategory(Item_AddCategory c)
+    {
+        if(categoryList.contains(c))
+        {
+            System.out.println("FOUND!");
+            categoryList.remove(c);
+            c_content.remove(c);
+            c_content.repaint();
+            c_content.revalidate();
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel c_container;
     private javax.swing.JPanel c_content;
