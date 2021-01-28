@@ -22,7 +22,67 @@ public class Database {
     public static JP_UpdateMenu dbMenu = null;
     public static ArrayList<CategoryInfo> categories = new ArrayList<>();
     public static ArrayList<CategoryInfo> loadCategories = new ArrayList<>();
+    public static ArrayList<AccountInfo> accounts = new ArrayList<>();
+    public static ArrayList<AccountInfo> loadAccounts = new ArrayList<>();
     
+    public static void SaveAccount(String fileName)
+    {
+        System.out.println("SAVING!");
+        if(!fileName.isEmpty())
+        {
+            try {
+                File file = new File(fileName + ".txt");
+                if(!file.exists()){
+                    if(file.createNewFile())
+                    {
+                        System.out.println(fileName + " created!");
+                    }
+                }
+                else
+                {
+                    //Saving to category file
+                    FileWriter fw = new FileWriter(file);
+                    for (int i = 0; i < accounts.size(); i++) {
+                        fw.write(accounts.get(i).getUsername() + "," + accounts.get(i).getPassword() + "," + accounts.get(i).getType() + "\n");
+                    }
+                    fw.close();
+                }
+                
+               
+            } catch (IOException e) {
+                
+            }
+        }
+    }
+   
+    public static void LoadAccount(String fileName)
+    {
+        ArrayList<AccountInfo> a = new ArrayList<>();
+        System.out.println("SAVING!");
+        if(!fileName.isEmpty())
+        {
+            try {
+                File file = new File(fileName + ".txt");
+                if(!file.exists()){
+                    if(file.createNewFile())
+                    {
+                        System.out.println(fileName + " created!");
+                    }
+                }
+               
+                Scanner sc = new Scanner(file);
+                while(sc.hasNextLine())
+                {
+                    String[] s = sc.nextLine().split(",");
+                    a.add(new AccountInfo(s[0],s[1],s[2]));
+                }
+            } catch (IOException e) {
+                
+            }
+        }
+        loadAccounts = a;
+    }
+   
     
     public static void SaveToFile(String fileName)
     {

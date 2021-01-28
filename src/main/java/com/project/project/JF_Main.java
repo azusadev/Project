@@ -17,15 +17,31 @@ public class JF_Main extends javax.swing.JFrame {
 
     
     private JPanel selectedButton = null;
-
+    private String currentUser;
+    
     /**
      * Creates new form JF_Main
      */
     public JF_Main() {
+       initComponents();
+       selectedButton = jp_menu;
+       jp_mainArea.add(new JP_Menu(),"menu");
+       jp_mainArea.add(new JP_UpdateMenu(),"stocks");
+       jp_mainArea.add(new JP_Accounts(),"accounts");
+
+       jp_buttons.setBackground(ColorTheme.primaryColor);
+    }
+
+    
+    public JF_Main(String user) {
         initComponents();
+        currentUser = user;
+        currentuser.setText(user);
         selectedButton = jp_menu;
         jp_mainArea.add(new JP_Menu(),"menu");
         jp_mainArea.add(new JP_UpdateMenu(),"stocks");
+        jp_mainArea.add(new JP_Accounts(),"accounts");
+
         jp_buttons.setBackground(ColorTheme.primaryColor);
     }
 
@@ -54,6 +70,7 @@ public class JF_Main extends javax.swing.JFrame {
             case "accounts":
                 selectedButton = jp_accounts;
                 accountsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/roundaccount-black.png")));
+                c.show(jp_mainArea, s);
                 break;
         }
         selectedButton.setBackground(ColorTheme.secondaryColor);
@@ -69,8 +86,8 @@ public class JF_Main extends javax.swing.JFrame {
     private void initComponents() {
 
         jp_taskbar = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        switchuser = new javax.swing.JLabel();
+        currentuser = new javax.swing.JLabel();
         jp_buttons = new javax.swing.JPanel();
         jp_menu = new javax.swing.JPanel();
         menuIcon = new javax.swing.JLabel();
@@ -78,6 +95,7 @@ public class JF_Main extends javax.swing.JFrame {
         stocksIcon = new javax.swing.JLabel();
         jp_accounts = new javax.swing.JPanel();
         accountsIcon = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jp_mainArea = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,15 +116,15 @@ public class JF_Main extends javax.swing.JFrame {
         jp_taskbar.setPreferredSize(new java.awt.Dimension(1200, 30));
         jp_taskbar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("SWITCH USER >");
-        jp_taskbar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 0, 120, 50));
+        switchuser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        switchuser.setForeground(new java.awt.Color(255, 255, 255));
+        switchuser.setText("SWITCH USER >");
+        jp_taskbar.add(switchuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 0, 120, 50));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("CURRENT USER: ADMIN");
-        jp_taskbar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 0, -1, 50));
+        currentuser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        currentuser.setForeground(new java.awt.Color(255, 255, 255));
+        currentuser.setText("Admin");
+        jp_taskbar.add(currentuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 0, 140, 50));
 
         jp_buttons.setPreferredSize(new java.awt.Dimension(280, 50));
         jp_buttons.setLayout(new javax.swing.BoxLayout(jp_buttons, javax.swing.BoxLayout.LINE_AXIS));
@@ -168,6 +186,11 @@ public class JF_Main extends javax.swing.JFrame {
         jp_buttons.add(jp_accounts);
 
         jp_taskbar.add(jp_buttons, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 50));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("CURRENT USER:");
+        jp_taskbar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 0, -1, 50));
 
         getContentPane().add(jp_taskbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 50));
 
@@ -238,8 +261,8 @@ public class JF_Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accountsIcon;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel currentuser;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jp_accounts;
     private javax.swing.JPanel jp_buttons;
     private javax.swing.JPanel jp_mainArea;
@@ -248,5 +271,6 @@ public class JF_Main extends javax.swing.JFrame {
     private javax.swing.JPanel jp_taskbar;
     private javax.swing.JLabel menuIcon;
     private javax.swing.JLabel stocksIcon;
+    private javax.swing.JLabel switchuser;
     // End of variables declaration//GEN-END:variables
 }

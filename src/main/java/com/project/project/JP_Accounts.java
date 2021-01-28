@@ -5,7 +5,10 @@
  */
 package com.project.project;
 
+import java.awt.Dimension;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 /**
@@ -14,11 +17,42 @@ import javax.swing.SwingUtilities;
  */
 public class JP_Accounts extends javax.swing.JPanel {
 
+    private ArrayList<Item_Account> accounts = new ArrayList<>();
+
+    public ArrayList<Item_Account> getAccounts() {
+        return accounts;
+    }
+
+    public JPanel getC_content() {
+        return c_content;
+    }
+    
     /**
      * Creates new form JP_Accounts
      */
     public JP_Accounts() {
         initComponents();
+        updatemenu_sp.getVerticalScrollBar().setPreferredSize(new Dimension(0,0));
+        updatemenu_sp.getVerticalScrollBar().setUnitIncrement(36);
+        updatemenu_sp.getViewport().setBorder(null);
+        updatemenu_sp.setViewportBorder(null);
+        updatemenu_sp.setBorder(null);
+        
+        Database.LoadAccount("Accounts");
+        for (int i = 0; i < Database.loadAccounts.size(); i++) {
+            addAccount(Database.loadAccounts.get(i).getUsername(),Database.loadAccounts.get(i).getPassword(),Database.loadAccounts.get(i).getType());
+        }
+    }
+    
+    public void addAccount(String name, String pass, String type)
+    {
+        Item_Account ac = new Item_Account(this,name, pass, type);
+        Database.accounts.add(new AccountInfo(name,pass,type));
+        accounts.add(ac);
+        c_content.add(ac);
+        c_content.repaint();
+        c_content.revalidate();
+        Database.SaveAccount("Accounts");
     }
 
     /**
@@ -36,6 +70,9 @@ public class JP_Accounts extends javax.swing.JPanel {
         jp_addaccount = new javax.swing.JPanel();
         jl_addaccount = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1200, 650));
         setMinimumSize(new java.awt.Dimension(1200, 650));
@@ -58,7 +95,7 @@ public class JP_Accounts extends javax.swing.JPanel {
 
         updatemenu_sp.setViewportView(c_container);
 
-        add(updatemenu_sp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, -1, 530));
+        add(updatemenu_sp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, -1, 490));
 
         jp_addaccount.setBackground(new java.awt.Color(22, 36, 49));
         jp_addaccount.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -88,22 +125,38 @@ public class JP_Accounts extends javax.swing.JPanel {
 
         add(jp_addaccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, 190, 40));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Accounts");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 440, 40));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel1.setText("Type");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, 270, 40));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setText("Accounts");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 440, 40));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel3.setText("Username");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 220, 40));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel4.setText("Password");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, 220, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jp_addaccountMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_addaccountMouseReleased
         // TODO add your handling code here:
-        JOP_Category tempCategory = new JOP_Category();
+        JOP_Account tempAccount = new JOP_Account();
         int value = JOptionPane.showConfirmDialog(SwingUtilities.getWindowAncestor(this),
-            tempCategory,
+            tempAccount,
             "Add Account",
             JOptionPane.OK_CANCEL_OPTION,
             JOptionPane.PLAIN_MESSAGE);
 
-        if(value == JOptionPane.OK_OPTION && !tempCategory.categoryName.getText().isEmpty())
+        if(value == JOptionPane.OK_OPTION && !tempAccount.username.getText().isEmpty() && !tempAccount.password.getText().isEmpty())
         {
+            addAccount(tempAccount.username.getText(), tempAccount.password.getText(), tempAccount.type.getSelectedItem().toString());
         }
     }//GEN-LAST:event_jp_addaccountMouseReleased
 
@@ -112,6 +165,9 @@ public class JP_Accounts extends javax.swing.JPanel {
     private javax.swing.JPanel c_container;
     private javax.swing.JPanel c_content;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jl_addaccount;
     private javax.swing.JPanel jp_addaccount;
     private javax.swing.JScrollPane updatemenu_sp;
