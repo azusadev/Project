@@ -13,9 +13,9 @@ import java.util.ArrayList;
  * @author reden
  */
 public class ColorTheme {
-    public static Color primaryColor = Color.decode("#1c232b");
+    public static Color primaryColor = Color.decode("#162431");
     public static Color secondaryColor = Color.decode("#ffffff");
-    public static Color accentColor = Color.decode("#263352");
+    public static Color accentColor = Color.decode("#3a556f");
     public static Color highlightColor = Color.decode("#51596b");
     public static Color secondaryHighlightColor = Color.decode("#3c424f");
 }

@@ -31,7 +31,7 @@ public class JP_MenuCard extends javax.swing.JPanel implements MouseListener{
     
     public JP_MenuCard(JP_Menu panel, String name) {
         initComponents();
-                //setting category scroll pane
+        //setting category scroll pane
         this.setBackground(ColorTheme.secondaryColor);
         m_container.setBackground(ColorTheme.secondaryColor);
         m_content.setBackground(ColorTheme.secondaryColor);

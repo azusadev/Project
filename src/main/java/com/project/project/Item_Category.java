@@ -24,7 +24,7 @@ public class Item_Category extends javax.swing.JPanel {
     public Item_Category(String name) {
         initComponents();
         categoryName = name;
-        this.setBackground(ColorTheme.primaryColor);
+        this.setBackground(ColorTheme.accentColor);
         jl_category.setText("<html><div style='text-align: center;'>" + categoryName + "<div></html");
     }
     

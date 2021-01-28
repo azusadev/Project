@@ -5,7 +5,8 @@
  */
 package com.project.project;
 
-import java.awt.Color;
+import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 
 /**
@@ -16,7 +17,7 @@ public class JF_Main extends javax.swing.JFrame {
 
     
     private JPanel selectedButton = null;
-    
+
     /**
      * Creates new form JF_Main
      */
@@ -24,6 +25,9 @@ public class JF_Main extends javax.swing.JFrame {
         initComponents();
         selectedButton = jp_menu;
         jp_mainArea.add(new JP_Menu(),"menu");
+        jp_mainArea.add(new JP_Logs(),"logs");
+        jp_mainArea.add(new JP_UpdateMenu(),"stocks");
+        jp_buttons.setBackground(ColorTheme.primaryColor);
     }
 
     private void selectButton(String s)
@@ -35,19 +39,23 @@ public class JF_Main extends javax.swing.JFrame {
         else if(selectedButton == jp_logs) logsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logs-white.png")));
         else if(selectedButton == jp_accounts) accountsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/roundaccount-white.png")));
         
+        CardLayout c = (CardLayout)jp_mainArea.getLayout();
         switch(s)
         {
             case "menu":
                 selectedButton = jp_menu;
                 menuIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menu-black.png")));
+                c.show(jp_mainArea, s);
                 break;
             case "logs":
                 selectedButton = jp_logs;
                 logsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logs-black.png")));
+                c.show(jp_mainArea, s);
                 break;
             case "stocks":
                 selectedButton = jp_stocks;
                 stocksIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/checklist-black.png")));
+                c.show(jp_mainArea, s);
                 break;
             case "accounts":
                 selectedButton = jp_accounts;
