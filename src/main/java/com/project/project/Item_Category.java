@@ -23,9 +23,9 @@ public class Item_Category extends javax.swing.JPanel {
     
     public Item_Category(String name) {
         initComponents();
-        categoryName = name;
         this.setBackground(ColorTheme.accentColor);
-        jl_category.setText("<html><div style='text-align: center;'>" + categoryName + "<div></html");
+        setCategory(name);
+
     }
     
     public String getCategoryName()
@@ -37,6 +37,13 @@ public class Item_Category extends javax.swing.JPanel {
     {
         return jl_category;
     }
+    
+    public void setCategory(String categoryName)
+    {
+        this.categoryName = categoryName;
+        jl_category.setText("<html><div style='text-align: center;'>" + categoryName + "<div></html");
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

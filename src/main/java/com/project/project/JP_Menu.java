@@ -19,9 +19,14 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
 
     private Item_Category selectedCategory = null;
     private ArrayList<Item_Receipt> receipt;
-    private ArrayList<Item_Category> category;
+    private ArrayList<Item_Category> category;    
+    private ArrayList<JP_MenuCard> menuCard;
     private double totalAmount = 0.00;
     private double taxAmount = 0.00;
+
+    public ArrayList<JP_MenuCard> getMenuCard() {
+        return menuCard;
+    }
 
     public ArrayList<Item_Receipt> getReceipt() {
         return receipt;
@@ -36,8 +41,10 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
      */
     public JP_Menu() {
         initComponents();
+        Database.mainMenu = this;
         this.receipt = new ArrayList<>();
         this.category = new ArrayList<>();
+        this.menuCard = new ArrayList<>();
         this.setBackground(ColorTheme.secondaryColor);
         receipt_area.setBackground(ColorTheme.secondaryColor);
         menu_area.setBackground(ColorTheme.secondaryColor);
@@ -75,16 +82,46 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
         Item_Category temp = new Item_Category(categoryName);
         temp.addMouseListener(this);
         c_content.add(temp);
-        menu_area.add(new JP_MenuCard(this, categoryName), categoryName);
+        c_content.repaint();
+        c_content.revalidate();
+        JP_MenuCard tmc = new JP_MenuCard(this, categoryName);
+        menu_area.add(tmc, categoryName);
+        menuCard.add(tmc);
         if(category.size() < 1)
         {
             selectedCategory = temp;
             selectedCategory.setBackground(ColorTheme.secondaryColor);
             selectedCategory.getJLabelName().setForeground(ColorTheme.primaryColor);
+            CardLayout c = (CardLayout)menu_area.getLayout();
+            c.show(menu_area, categoryName);
         }
         category.add(temp);
     }
     
+    public void editCategory(String oldName, String newName)
+    {
+        for (Item_Category c : category) {
+            if(c.getCategoryName().equals(oldName))
+            {
+                c.setCategory(newName);
+                for(JP_MenuCard m : menuCard)
+                {
+                    if(m.getCategoryName().equals(oldName))
+                    {
+                        m.setCategoryName(newName);
+                        CardLayout lay = (CardLayout)menu_area.getLayout();
+                        lay.removeLayoutComponent(m);
+                        lay.addLayoutComponent(m, newName);
+                        lay.show(menu_area, selectedCategory.getCategoryName());
+                        break;
+                    }
+                   
+                }
+  
+                break;
+            }
+        }
+    }
     
     public double getTotalAmount() {
         return totalAmount;

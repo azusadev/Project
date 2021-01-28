@@ -18,11 +18,26 @@ public class JP_MenuCard extends javax.swing.JPanel implements MouseListener{
 
     private JP_Menu parentMenu = null;
     private String categoryName;
+    private ArrayList<Item_Menu> menuButtons;
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+    
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public ArrayList<Item_Menu> getMenuButtons() {
+        return menuButtons;
+    }
+    
     /**
      * Creates new form JP_MenuCard
      */
     public JP_MenuCard() {
         initComponents();
+        menuButtons = new ArrayList<>();
         this.setBackground(ColorTheme.secondaryColor);
         m_container.setBackground(ColorTheme.secondaryColor);
         m_content.setBackground(ColorTheme.secondaryColor);
@@ -32,6 +47,7 @@ public class JP_MenuCard extends javax.swing.JPanel implements MouseListener{
     public JP_MenuCard(JP_Menu panel, String name) {
         initComponents();
         //setting category scroll pane
+        menuButtons = new ArrayList<>();
         this.setBackground(ColorTheme.secondaryColor);
         m_container.setBackground(ColorTheme.secondaryColor);
         m_content.setBackground(ColorTheme.secondaryColor);
@@ -42,11 +58,6 @@ public class JP_MenuCard extends javax.swing.JPanel implements MouseListener{
         menu_sp.setBorder(null);
         categoryName = name;
         parentMenu = panel;
-//        for (int i = 0; i < 30; i++) {
-//            Item_Menu temp = new Item_Menu(categoryName + " Menu no." + (i+1), 200.00*(i+1));
-//            temp.addMouseListener(this);
-//            m_content.add(temp);
-//        }
     }
 
     /**
@@ -89,6 +100,28 @@ public class JP_MenuCard extends javax.swing.JPanel implements MouseListener{
     private javax.swing.JScrollPane menu_sp;
     // End of variables declaration//GEN-END:variables
 
+    
+    public void addMenuButton(String menuName, double menuPrice)
+    {
+        Item_Menu temp = new Item_Menu(menuName, menuPrice);
+        temp.addMouseListener(this);
+        m_content.add(temp);
+        m_content.repaint();
+        m_content.revalidate();
+        menuButtons.add(temp);
+    }
+    
+    public void editMenuButton(String oldMenu, String newMenu, double newPrice)
+    {
+        for(Item_Menu m : menuButtons)
+        {
+            if(m.getMenuName().equals(oldMenu))
+            {
+                m.setMenu(newMenu, newPrice);
+                break;
+            }
+        }
+    }
     
     public void removeReceipt(String name)
     {

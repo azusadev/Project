@@ -10,5 +10,5 @@ package com.project.project;
  * @author reden
  */
 public class Database {
-    
+    public static JP_Menu mainMenu = null;
 }

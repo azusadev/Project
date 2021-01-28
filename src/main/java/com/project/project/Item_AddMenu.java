@@ -15,8 +15,25 @@ import javax.swing.SwingUtilities;
 public class Item_AddMenu extends javax.swing.JPanel {
 
     private boolean isOpen = false;
+    private String categoryName;
     private String menuName;
     private double menuPrice;
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+        
+    public String getMenuName() {
+        return menuName;
+    }
+    
+    public String getCategoryName() {
+        return categoryName;
+    }
+    public double getMenuPrice() {
+        return menuPrice;
+    }
+    
     private Item_AddCategory category;
     /**
      * Creates new form Item_AddCategory
@@ -27,12 +44,15 @@ public class Item_AddMenu extends javax.swing.JPanel {
     }
     public Item_AddMenu(Item_AddCategory c, String n, double p) {
         initComponents();
+        categoryName = c.getCategoryName();
         menuName = n;
         category = c;
         menuPrice = p;
         menu.setText(n);
         price.setText(p + "");
     }
+    
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,13 +78,13 @@ public class Item_AddMenu extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         price.setBackground(new java.awt.Color(255, 255, 255));
-        price.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        price.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         price.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         price.setText("2000.0");
         jPanel1.add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 230, 40));
 
         menu.setBackground(new java.awt.Color(255, 255, 255));
-        menu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        menu.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         menu.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menu.setText("MenuName");
         jPanel1.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 420, 40));
@@ -109,6 +129,14 @@ public class Item_AddMenu extends javax.swing.JPanel {
 
             if(value == JOptionPane.OK_OPTION && !tempMenu.menuName.getText().isEmpty() && !tempMenu.menuPrice.getText().isEmpty())
             {
+                for(JP_MenuCard mc : Database.mainMenu.getMenuCard())
+                {
+                    if(mc.getCategoryName().equals(categoryName))
+                    {
+                        mc.editMenuButton(menuName, tempMenu.menuName.getText(), Double.parseDouble(tempMenu.menuPrice.getText()));
+                        break;
+                    }
+                }
                 menuName = tempMenu.menuName.getText();
                 menuPrice = Double.parseDouble(tempMenu.menuPrice.getText());
                 menu.setText(menuName);

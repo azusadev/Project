@@ -27,9 +27,7 @@ public class Item_Menu extends javax.swing.JPanel {
 
     public Item_Menu(String name, double price) {
         initComponents();
-        menuName = name;
-        menuPrice = price;
-        jl_menu.setText("<html><div style='text-align: center;'>" + menuName + "</div></html>");
+        setMenu(name, price);
     }
     
     public String getMenuName()
@@ -40,6 +38,13 @@ public class Item_Menu extends javax.swing.JPanel {
     public double getMenuPrice()
     {
         return menuPrice;
+    }
+    
+    public void setMenu(String menuName, double menuPrice)
+    {
+        this.menuName = menuName;
+        this.menuPrice = menuPrice;
+        jl_menu.setText("<html><div style='text-align: center;'>" + menuName + "</div></html>");
     }
     /**
      * This method is called from within the constructor to initialize the form.

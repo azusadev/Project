@@ -118,6 +118,7 @@ public class JP_UpdateMenu extends javax.swing.JPanel {
         {
             Item_AddCategory temp = new Item_AddCategory(this, tempCategory.categoryName.getText());
             categoryList.add(temp);
+            Database.mainMenu.addCategory(tempCategory.categoryName.getText());
             c_content.add(temp);
             c_content.repaint();
             c_content.revalidate();

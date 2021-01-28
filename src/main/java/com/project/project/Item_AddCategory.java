@@ -17,8 +17,18 @@ public class Item_AddCategory extends javax.swing.JPanel {
 
     private boolean isOpen = false;
     private ArrayList<Item_AddMenu> menuList;
+
+  
     private String categoryName;
     private JP_UpdateMenu parent;
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+    
+    public ArrayList<Item_AddMenu> getMenuList() {
+        return menuList;
+    }
     
     /**
      * Creates new form Item_AddCategory
@@ -136,6 +146,14 @@ public class Item_AddCategory extends javax.swing.JPanel {
                 Item_AddMenu temp = new Item_AddMenu(this, tempMenu.menuName.getText(), Double.parseDouble(tempMenu.menuPrice.getText()));
                 jp_content.add(temp, 0);
                 menuList.add(temp);
+                for(JP_MenuCard mc : Database.mainMenu.getMenuCard())
+                {
+                    if(mc.getCategoryName().equals(categoryName))
+                    {
+                        mc.addMenuButton(tempMenu.menuName.getText(), Double.parseDouble(tempMenu.menuPrice.getText()));
+                        break;
+                    }
+                }
                 jp_content.repaint();
                 jp_content.revalidate();
             }
@@ -168,8 +186,13 @@ public class Item_AddCategory extends javax.swing.JPanel {
 
             if(value == JOptionPane.OK_OPTION && !tempCategory.categoryName.getText().isEmpty())
             {
+                Database.mainMenu.editCategory(categoryName, tempCategory.categoryName.getText());
                 categoryName = tempCategory.categoryName.getText();
                 jl_categoryname.setText(categoryName);
+                for(Item_AddMenu m : menuList)
+                {
+                    m.setCategoryName(categoryName);
+                }
             }
 
         } catch (Exception e) {
