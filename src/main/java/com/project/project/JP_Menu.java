@@ -76,64 +76,80 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
 
     public void addCategory(String categoryName)
     {
-        Item_Category temp = new Item_Category(categoryName);
-        temp.addMouseListener(this);
-        category.add(temp);
-        c_content.add(temp);
-        c_content.repaint();
-        c_content.revalidate();
-        JP_MenuCard tmc = new JP_MenuCard(this, categoryName);
-        menuCard.add(tmc);
-        menu_area.add(tmc, categoryName);
-        if(category.size() <= 1)
-        {
-            selectedCategory = temp;
-            selectedCategory.setBackground(ColorTheme.secondaryColor);
-            selectedCategory.getJLabelName().setForeground(ColorTheme.primaryColor);
-            CardLayout c = (CardLayout)menu_area.getLayout();
-            c.show(menu_area, categoryName);
+        
+        try {
+            Item_Category temp = new Item_Category(categoryName);
+            temp.addMouseListener(this);
+            category.add(temp);
+            c_content.add(temp);
+            c_content.repaint();
+            c_content.revalidate();
+            JP_MenuCard tmc = new JP_MenuCard(this, categoryName);
+            menuCard.add(tmc);
+            menu_area.add(tmc, categoryName);
+            menu_area.repaint();
+            menu_area.revalidate();
+            if(category.size() <= 1)
+            {
+                selectedCategory = temp;
+                selectedCategory.setBackground(ColorTheme.secondaryColor);
+                selectedCategory.getJLabelName().setForeground(ColorTheme.primaryColor);
+                CardLayout c = (CardLayout)menu_area.getLayout();
+                c.show(menu_area, categoryName);
+            }
+        } catch (Exception e) {
         }
     }
     
     public void deleteCategory(String categoryName)
     {
-        for (Item_Category c : category) {
-            if(c.getCategoryName().equals(categoryName))
-            {
-                for(JP_MenuCard m : menuCard)
+        try {
+            for (int i = 0; i<category.size();i++) {
+                if(category.get(i).getCategoryName().equals(categoryName))
                 {
-                    if(m.getCategoryName().equals(categoryName))
-                    {
-                        CardLayout lay = (CardLayout)menu_area.getLayout();
-                        lay.removeLayoutComponent(m);
-                        menuCard.remove(m);
-                        
-                        break;
+                    c_content.remove(category.get(i));
+                    c_content.repaint();
+                    c_content.revalidate();
+                    for (int j = 0; j < menuCard.size(); j++) {
+                        if(menuCard.get(j).getCategoryName().equals(categoryName))
+                        {
+//                            CardLayout lay = (CardLayout)menu_area.getLayout();
+//                            lay.removeLayoutComponent(menuCard.get(j));
+                            menu_area.remove(menuCard.get(j));
+                            menuCard.remove(menuCard.get(j));
+                            menu_area.repaint();
+                            menu_area.revalidate();
+                            break;
+                        }
                     }
+                    category.remove(category.get(i));
+                    if(category.size()>0) 
+                    {
+                        selectedCategory = category.get(0);
+                        selectedCategory.setBackground(ColorTheme.secondaryColor);
+                        selectedCategory.getJLabelName().setForeground(ColorTheme.primaryColor);
+                        CardLayout lay = (CardLayout)menu_area.getLayout();
+                        lay.show(menu_area, selectedCategory.getCategoryName());
+               
+                    }
+                    else
+                    {
+                        selectedCategory = null;
+                    }
+              
+                    break;
                 }
-                category.remove(c);
-                if(category.size()>0) 
-                {
-                    selectedCategory = category.get(0);
-                    selectedCategory.setBackground(ColorTheme.secondaryColor);
-                    selectedCategory.getJLabelName().setForeground(ColorTheme.primaryColor);
-                }
-                CardLayout lay = (CardLayout)menu_area.getLayout();
-                lay.show(menu_area, selectedCategory.getCategoryName());
-                c_content.remove(c);
-                c_content.repaint();
-                c_content.revalidate();
-                break;
             }
+        } catch (Exception e) {
         }
     }
     
     public void editCategory(String oldName, String newName)
     {
-        for (Item_Category c : category) {
-            if(c.getCategoryName().equals(oldName))
+        for (int i = 0; i<category.size();i++) {
+            if(category.get(i).getCategoryName().equals(oldName))
             {
-                c.setCategory(newName);
+                category.get(i).setCategory(newName);
                 for(JP_MenuCard m : menuCard)
                 {
                     if(m.getCategoryName().equals(oldName))

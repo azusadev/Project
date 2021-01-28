@@ -195,9 +195,10 @@ public class Item_AddCategory extends javax.swing.JPanel {
     private void deleteMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseReleased
         // TODO add your handling code here:
         for (int i = 0; i < menuList.size(); i++) {
-            removeMenu(menuList.get(i));
+            this.removeMenu(menuList.get(i));
         }
         parent.removeCategory(this);
+        Database.DeleteFile(categoryName);
         Database.SaveToFile("Categories");
     }//GEN-LAST:event_deleteMouseReleased
 
