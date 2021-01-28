@@ -98,6 +98,30 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
         category.add(temp);
     }
     
+    public void deleteCategory(String categoryName)
+    {
+        for (Item_Category c : category) {
+            if(c.getCategoryName().equals(categoryName))
+            {
+                for(JP_MenuCard m : menuCard)
+                {
+                    if(m.getCategoryName().equals(categoryName))
+                    {
+                        CardLayout lay = (CardLayout)menu_area.getLayout();
+                        lay.removeLayoutComponent(m);
+                        menuCard.remove(m);
+                        break;
+                    }
+                }
+                c_content.remove(c);
+                c_content.repaint();
+                c_content.revalidate();
+                category.remove(c);
+                break;
+            }
+        }
+    }
+    
     public void editCategory(String oldName, String newName)
     {
         for (Item_Category c : category) {

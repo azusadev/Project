@@ -123,6 +123,21 @@ public class JP_MenuCard extends javax.swing.JPanel implements MouseListener{
         }
     }
     
+    public void removeMenuButton(String menuName)
+    {
+        for(Item_Menu m : menuButtons)
+        {
+            if(m.getMenuName().equals(menuName))
+            {
+                m_content.remove(m);
+                menuButtons.remove(m);
+                m_content.repaint();
+                m_content.revalidate();
+                break;
+            }
+        }
+    }
+    
     public void removeReceipt(String name)
     {
         for (Item_Receipt r : parentMenu.getReceipt()) {

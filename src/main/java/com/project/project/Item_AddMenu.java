@@ -112,6 +112,7 @@ public class Item_AddMenu extends javax.swing.JPanel {
 
     private void deleteMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseReleased
         // TODO add your handling code here:
+    
         category.removeMenu(this);
     }//GEN-LAST:event_deleteMouseReleased
 
@@ -129,6 +130,20 @@ public class Item_AddMenu extends javax.swing.JPanel {
 
             if(value == JOptionPane.OK_OPTION && !tempMenu.menuName.getText().isEmpty() && !tempMenu.menuPrice.getText().isEmpty())
             {
+                for (int i = 0; i < Database.categories.size(); i++) {
+                    if(Database.categories.get(i).getName().equals(categoryName))
+                    {
+                        for (int j = 0; j < Database.categories.get(i).getMenus().size(); j++) {
+                            if(Database.categories.get(i).getMenus().get(j).getName().equals(menuName))
+                            {
+                                Database.categories.get(i).getMenus().get(j).setName(tempMenu.menuName.getText());
+                                Database.categories.get(i).getMenus().get(j).setPrice(Double.parseDouble(tempMenu.menuPrice.getText()));
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
                 for(JP_MenuCard mc : Database.mainMenu.getMenuCard())
                 {
                     if(mc.getCategoryName().equals(categoryName))

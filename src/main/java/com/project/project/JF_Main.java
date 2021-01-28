@@ -25,7 +25,6 @@ public class JF_Main extends javax.swing.JFrame {
         initComponents();
         selectedButton = jp_menu;
         jp_mainArea.add(new JP_Menu(),"menu");
-        jp_mainArea.add(new JP_Logs(),"logs");
         jp_mainArea.add(new JP_UpdateMenu(),"stocks");
         jp_buttons.setBackground(ColorTheme.primaryColor);
     }
@@ -36,7 +35,6 @@ public class JF_Main extends javax.swing.JFrame {
         
         if(selectedButton == jp_menu) menuIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menu-white.png")));
         else if(selectedButton == jp_stocks) stocksIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/checklist-white.png")));
-        else if(selectedButton == jp_logs) logsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logs-white.png")));
         else if(selectedButton == jp_accounts) accountsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/roundaccount-white.png")));
         
         CardLayout c = (CardLayout)jp_mainArea.getLayout();
@@ -47,11 +45,7 @@ public class JF_Main extends javax.swing.JFrame {
                 menuIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menu-black.png")));
                 c.show(jp_mainArea, s);
                 break;
-            case "logs":
-                selectedButton = jp_logs;
-                logsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logs-black.png")));
-                c.show(jp_mainArea, s);
-                break;
+          
             case "stocks":
                 selectedButton = jp_stocks;
                 stocksIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/checklist-black.png")));
@@ -80,8 +74,6 @@ public class JF_Main extends javax.swing.JFrame {
         jp_buttons = new javax.swing.JPanel();
         jp_menu = new javax.swing.JPanel();
         menuIcon = new javax.swing.JLabel();
-        jp_logs = new javax.swing.JPanel();
-        logsIcon = new javax.swing.JLabel();
         jp_stocks = new javax.swing.JPanel();
         stocksIcon = new javax.swing.JLabel();
         jp_accounts = new javax.swing.JPanel();
@@ -93,6 +85,11 @@ public class JF_Main extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(1200, 700));
         setMinimumSize(new java.awt.Dimension(1200, 700));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jp_taskbar.setBackground(new java.awt.Color(22, 36, 49));
@@ -112,7 +109,7 @@ public class JF_Main extends javax.swing.JFrame {
         jp_taskbar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 0, -1, 50));
 
         jp_buttons.setPreferredSize(new java.awt.Dimension(280, 50));
-        jp_buttons.setLayout(new java.awt.GridLayout(1, 0));
+        jp_buttons.setLayout(new javax.swing.BoxLayout(jp_buttons, javax.swing.BoxLayout.LINE_AXIS));
 
         jp_menu.setBackground(new java.awt.Color(197, 214, 222));
         jp_menu.setPreferredSize(new java.awt.Dimension(70, 50));
@@ -131,25 +128,6 @@ public class JF_Main extends javax.swing.JFrame {
         jp_menu.add(menuIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jp_buttons.add(jp_menu);
-
-        jp_logs.setBackground(new java.awt.Color(22, 36, 49));
-        jp_logs.setPreferredSize(new java.awt.Dimension(70, 50));
-        jp_logs.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        logsIcon.setForeground(new java.awt.Color(255, 255, 255));
-        logsIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logs-white.png"))); // NOI18N
-        logsIcon.setMaximumSize(new java.awt.Dimension(70, 50));
-        logsIcon.setMinimumSize(new java.awt.Dimension(70, 50));
-        logsIcon.setPreferredSize(new java.awt.Dimension(70, 50));
-        logsIcon.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                logsIconMouseReleased(evt);
-            }
-        });
-        jp_logs.add(logsIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        jp_buttons.add(jp_logs);
 
         jp_stocks.setBackground(new java.awt.Color(22, 36, 49));
         jp_stocks.setPreferredSize(new java.awt.Dimension(70, 50));
@@ -189,7 +167,7 @@ public class JF_Main extends javax.swing.JFrame {
 
         jp_buttons.add(jp_accounts);
 
-        jp_taskbar.add(jp_buttons, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 50));
+        jp_taskbar.add(jp_buttons, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 50));
 
         getContentPane().add(jp_taskbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 50));
 
@@ -208,11 +186,6 @@ public class JF_Main extends javax.swing.JFrame {
         selectButton("menu");
     }//GEN-LAST:event_menuIconMouseReleased
 
-    private void logsIconMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logsIconMouseReleased
-        // TODO add your handling code here:
-        selectButton("logs");
-    }//GEN-LAST:event_logsIconMouseReleased
-
     private void stocksIconMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksIconMouseReleased
         // TODO add your handling code here:
         selectButton("stocks");
@@ -222,6 +195,11 @@ public class JF_Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         selectButton("accounts");
     }//GEN-LAST:event_accountsIconMouseReleased
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -264,12 +242,10 @@ public class JF_Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jp_accounts;
     private javax.swing.JPanel jp_buttons;
-    private javax.swing.JPanel jp_logs;
     private javax.swing.JPanel jp_mainArea;
     private javax.swing.JPanel jp_menu;
     private javax.swing.JPanel jp_stocks;
     private javax.swing.JPanel jp_taskbar;
-    private javax.swing.JLabel logsIcon;
     private javax.swing.JLabel menuIcon;
     private javax.swing.JLabel stocksIcon;
     // End of variables declaration//GEN-END:variables

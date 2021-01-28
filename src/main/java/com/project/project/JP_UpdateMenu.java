@@ -7,6 +7,8 @@ package com.project.project;
 
 import java.awt.Dimension;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
@@ -18,11 +20,17 @@ public class JP_UpdateMenu extends javax.swing.JPanel {
 
     
     private ArrayList<Item_AddCategory> categoryList;
+
+    public ArrayList<Item_AddCategory> getCategoryList() {
+        return categoryList;
+    }
+    
     /**
      * Creates new form JP_Logs
      */
     public JP_UpdateMenu() {
         initComponents();
+        Database.dbMenu = this;
         this.categoryList = new ArrayList<>();
         this.setBackground(ColorTheme.secondaryColor);
         updatemenu_sp.getVerticalScrollBar().setPreferredSize(new Dimension(0,0));
@@ -30,8 +38,47 @@ public class JP_UpdateMenu extends javax.swing.JPanel {
         updatemenu_sp.getViewport().setBorder(null);
         updatemenu_sp.setViewportBorder(null);
         updatemenu_sp.setBorder(null);
+        Database.LoadToFile("Categories");
+        for (int i = 0; i < Database.loadCategories.size(); i++) {
+            addCategory(Database.loadCategories.get(i).getName());
+            for (int j = 0; j < Database.loadCategories.get(i).getMenus().size(); j++) {
+                for (int k = 0; k < categoryList.size(); k++) {
+                    if(categoryList.get(k).getCategoryName().equals(Database.loadCategories.get(i).getName()))
+                    {
+                        categoryList.get(k).addMenu(Database.loadCategories.get(i).getMenus().get(j).getName(), Database.loadCategories.get(i).getMenus().get(j).getPrice());
+                        break;
+                    }
+                }
+            }
+        }
+        
     }
 
+    public void addCategory(String categoryName)
+    {
+        boolean found = false;
+        for(Item_AddCategory ac : categoryList)
+        {
+            if(ac.getCategoryName().equals(categoryName))
+            {
+                found = true;
+                break;
+            }
+        }
+        if(!found)
+        {
+            Item_AddCategory temp = new Item_AddCategory(this, categoryName);
+            categoryList.add(temp);
+            Database.mainMenu.addCategory(categoryName);
+            c_content.add(temp);
+            Database.categories.add(new CategoryInfo(categoryName));
+            Database.SaveToFile("Categories");
+        }
+        c_content.repaint();
+        c_content.revalidate();
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -116,12 +163,7 @@ public class JP_UpdateMenu extends javax.swing.JPanel {
 
         if(value == JOptionPane.OK_OPTION && !tempCategory.categoryName.getText().isEmpty())
         {
-            Item_AddCategory temp = new Item_AddCategory(this, tempCategory.categoryName.getText());
-            categoryList.add(temp);
-            Database.mainMenu.addCategory(tempCategory.categoryName.getText());
-            c_content.add(temp);
-            c_content.repaint();
-            c_content.revalidate();
+            addCategory(tempCategory.categoryName.getText());
         }
     }//GEN-LAST:event_jp_addcategoryMouseReleased
 
@@ -134,6 +176,14 @@ public class JP_UpdateMenu extends javax.swing.JPanel {
             c_content.remove(c);
             c_content.repaint();
             c_content.revalidate();
+            for (int i = 0; i < Database.categories.size(); i++) {
+                if(Database.categories.get(i).getName().equals(c.getCategoryName()))
+                {
+                    Database.categories.remove(Database.categories.get(i));
+                    break;
+                }
+            }
+            Database.SaveToFile("Categories");
         }
     }
     
