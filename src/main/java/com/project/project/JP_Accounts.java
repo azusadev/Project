@@ -32,6 +32,7 @@ public class JP_Accounts extends javax.swing.JPanel {
      */
     public JP_Accounts() {
         initComponents();
+        Database.accounts.clear();
         updatemenu_sp.getVerticalScrollBar().setPreferredSize(new Dimension(0,0));
         updatemenu_sp.getVerticalScrollBar().setUnitIncrement(36);
         updatemenu_sp.getViewport().setBorder(null);

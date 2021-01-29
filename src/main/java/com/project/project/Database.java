@@ -28,7 +28,6 @@ public class Database {
     
     public static void SaveAccount(String fileName)
     {
-        System.out.println("SAVING!");
         if(!fileName.isEmpty())
         {
             try {
@@ -41,15 +40,14 @@ public class Database {
                 }
                 else
                 {
-                    //Saving to category file
-                    FileWriter fw = new FileWriter(file);
-                    for (int i = 0; i < accounts.size(); i++) {
-                        fw.write(accounts.get(i).getUsername() + "," + accounts.get(i).getPassword() + "," + accounts.get(i).getType() + "\n");
-                    }
-                    fw.close();
+                  
                 }
-                
-               
+                //Saving to category file
+                FileWriter fw = new FileWriter(file);
+                for (int i = 0; i < accounts.size(); i++) {
+                    fw.write(accounts.get(i).getUsername() + "," + accounts.get(i).getPassword() + "," + accounts.get(i).getType() + "\n");
+                }
+                fw.close();
             } catch (IOException e) {
                 
             }

@@ -1,16 +1,3 @@
-admin,admin,Manager
-cashier,cashier,Cashier
 admin,asdfadf,Manager
-cashier,cashier,Cashier
-admin,admin,Manager
-cashier,cashier,Cashier
-admin,asdfadf,Manager
-cashier,cashier,Cashier
-admin,admin,Manager
-cashier,cashier,Cashier
-admin,asdfadf,Manager
-cashier,cashier,Cashier
-admin,admin,Manager
-cashier,cashier,Cashier
-admin,asdfadf,Manager
+admin2,adminn,Cashier
 cashier,cashier,Cashier

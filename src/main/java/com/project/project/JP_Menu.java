@@ -240,8 +240,6 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
         jl_tax = new javax.swing.JLabel();
         jp_pay = new javax.swing.JPanel();
         jl_pay = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jl_discount = new javax.swing.JLabel();
         menu_area = new javax.swing.JPanel();
         category_sp = new javax.swing.JScrollPane();
         c_container = new javax.swing.JPanel();
@@ -288,7 +286,7 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Total:");
-        receipt_area.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, -1, -1));
+        receipt_area.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Qty");
@@ -300,17 +298,17 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Tax:");
-        receipt_area.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, 40, -1));
+        receipt_area.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 520, 40, -1));
 
         jl_total.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jl_total.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jl_total.setText("0.0");
-        receipt_area.add(jl_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 560, 240, -1));
+        receipt_area.add(jl_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 550, 240, -1));
 
         jl_tax.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jl_tax.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jl_tax.setText("0.0");
-        receipt_area.add(jl_tax, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 500, 240, -1));
+        receipt_area.add(jl_tax, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 520, 240, -1));
 
         jp_pay.setBackground(new java.awt.Color(22, 36, 49));
 
@@ -336,15 +334,6 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
         );
 
         receipt_area.add(jp_pay, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 590, 90, 30));
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setText("Discount:");
-        receipt_area.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, -1, -1));
-
-        jl_discount.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jl_discount.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jl_discount.setText("0.0");
-        receipt_area.add(jl_discount, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 530, 240, -1));
 
         add(receipt_area, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 510, 630));
 
@@ -412,8 +401,6 @@ public class JP_Menu extends javax.swing.JPanel implements MouseListener{
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    public javax.swing.JLabel jl_discount;
     private javax.swing.JLabel jl_pay;
     public javax.swing.JLabel jl_tax;
     public javax.swing.JLabel jl_total;
