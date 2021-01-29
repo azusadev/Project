@@ -7,7 +7,7 @@ package com.project.project;
 
 /**
  *
- * @author reden
+ * @author Nouelle
  */
 public class JP_Logs extends javax.swing.JPanel {
 

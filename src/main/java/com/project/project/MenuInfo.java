@@ -7,7 +7,7 @@ package com.project.project;
 
 /**
  *
- * @author reden
+ * @author Nouelle
  */
 public class MenuInfo {
     private String name;

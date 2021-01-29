@@ -1,0 +1,3 @@
+SMA- 1pc Chiccken/BurgerSteak/Half Spaghetti,180.0
+SMB- 1pc Chiccken/Half Spaghetti/Shanghai,140.0
+SMC- Yumburger/Half Spaghetti/Regular Fries,150.0

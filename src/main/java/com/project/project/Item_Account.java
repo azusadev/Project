@@ -10,7 +10,7 @@ import javax.swing.SwingUtilities;
 
 /**
  *
- * @author reden
+ * @author Nouelle
  */
 public class Item_Account extends javax.swing.JPanel {
 

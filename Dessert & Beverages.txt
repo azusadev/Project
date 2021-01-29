@@ -1,0 +1,8 @@
+Buko Pie 3 Pies To Go,150.0
+Peach Mango Pie 3 Pies To Go,90.0
+Solo Buko Pie,40.0
+Solo Mango Pie,50.0
+Sprite(L),50.0
+Sprite(R),35.0
+Pineapple(R),50.0
+Pineapple(L),80.0

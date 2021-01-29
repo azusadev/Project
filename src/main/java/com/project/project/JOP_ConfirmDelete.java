@@ -7,7 +7,7 @@ package com.project.project;
 
 /**
  *
- * @author reden
+ * @author Nouelle
  */
 public class JOP_ConfirmDelete extends javax.swing.JPanel {
 

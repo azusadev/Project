@@ -10,7 +10,7 @@ import javax.swing.SwingUtilities;
 
 /**
  *
- * @author reden
+ * @author Nouelle
  */
 public class Item_Receipt extends javax.swing.JPanel {
 

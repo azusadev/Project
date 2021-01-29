@@ -7,7 +7,7 @@ package com.project.project;
 
 /**
  *
- * @author reden
+ * @author Nouelle
  */
 public class JF_Login extends javax.swing.JFrame {
 

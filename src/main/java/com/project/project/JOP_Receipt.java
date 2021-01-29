@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 /**
  *
- * @author reden
+ * @author Nouelle
  */
 public class JOP_Receipt extends javax.swing.JPanel {
 

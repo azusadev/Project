@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author reden
+ * @author Nouelle
  */
 public class CategoryInfo {
     

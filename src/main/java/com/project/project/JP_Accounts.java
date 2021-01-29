@@ -13,7 +13,7 @@ import javax.swing.SwingUtilities;
 
 /**
  *
- * @author reden
+ * @author Nouelle
  */
 public class JP_Accounts extends javax.swing.JPanel {
 

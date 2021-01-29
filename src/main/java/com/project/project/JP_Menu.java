@@ -16,7 +16,7 @@ import javax.swing.SwingUtilities;
 
 /**
  *
- * @author reden
+ * @author Nouelle
  */
 public class JP_Menu extends javax.swing.JPanel implements MouseListener{
 

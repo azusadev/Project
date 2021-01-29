@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author reden
+ * @author Nouelle
  */
 public class JP_MenuCard extends javax.swing.JPanel implements MouseListener{
 

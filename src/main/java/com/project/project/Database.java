@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author reden
+ * @author Nouelle
  */
 public class Database {
     public static String currentUser = "";

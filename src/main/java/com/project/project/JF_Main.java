@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author reden
+ * @author Nouelle
  */
 public class JF_Main extends javax.swing.JFrame {
 

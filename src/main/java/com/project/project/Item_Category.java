@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 
 /**
  *
- * @author reden
+ * @author Nouelle
  */
 public class Item_Category extends javax.swing.JPanel {
 

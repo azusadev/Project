@@ -14,7 +14,7 @@ import javax.swing.SwingUtilities;
 
 /**
  *
- * @author reden
+ * @author Nouelle
  */
 public class JP_UpdateMenu extends javax.swing.JPanel {
 

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author reden
+ * @author Nouelle
  */
 public class ColorTheme {
     public static Color primaryColor = Color.decode("#4f0707");

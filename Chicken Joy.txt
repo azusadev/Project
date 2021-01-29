@@ -1,0 +1,6 @@
+1pc Chicken w/Drinks,90.0
+2pc Chicken w/Drinks,170.0
+6pc Chicken,480.0
+8pc Chicken ,570.0
+6pc Chicken w/Drinks & rice,700.0
+8pc Chicken w/Drinks & rice,1500.0
